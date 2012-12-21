@@ -28,3 +28,4 @@ features[field][] = node-college_profile-field_what_doing
 features[field][] = node-college_profile-field_who_we_are
 features[node][] = college_profile
 features[taxonomy][] = college_type
+version = "7.x-1.0"
