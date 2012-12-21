@@ -1,6 +1,6 @@
 <?php
 
-function college_profile_update_7100 () {
+function college_profile_install () {
     field_delete_field('field_leader_college');
 }
 ?>
