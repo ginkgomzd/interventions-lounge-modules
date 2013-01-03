@@ -1,0 +1,7 @@
+name = Interventions Lounge
+description = Meta-Package for the interventions lounge
+core = 7.x
+package = Interventions Lounge
+dependencies[] = college_profile
+dependencies[] = workbench_moderation
+version = "7.x-1.0"
