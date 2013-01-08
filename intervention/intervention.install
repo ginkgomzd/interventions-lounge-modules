@@ -1,0 +1,6 @@
+<?php
+
+function intervention_install () {
+  node_type_delete('mx_intervention');
+}
+?>
