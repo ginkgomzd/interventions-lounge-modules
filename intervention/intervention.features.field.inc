@@ -196,10 +196,16 @@ function intervention_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'english' => 'English',
-          'math' => 'Math',
-          'reading' => 'Reading',
-          'success' => 'Student Success',
+          0 => 'Arts',
+          1 => 'Business',
+          2 => 'Communications',
+          3 => 'Computer Science',
+          4 => 'English',
+          5 => 'Humanities',
+          6 => 'Math',
+          7 => 'Reading',
+          8 => 'Science',
+          9 => 'Student Success',
         ),
         'allowed_values_function' => '',
       ),
@@ -238,7 +244,224 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '5',
+        'weight' => '4',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-intervention-field_intervention_status'.
+  $fields['node-intervention-field_intervention_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_intervention_status',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Active',
+          1 => 'Planned',
+          2 => 'Discontinued',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 17,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_intervention_status',
+      'label' => 'Intervention Status',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '19',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-intervention-field_intervention_type'.
+  $fields['node-intervention-field_intervention_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_intervention_type',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Admissions',
+          1 => 'Advising',
+          2 => 'Board of Trustees',
+          3 => 'Budgeting Process',
+          4 => 'Committee or Governance Structure',
+          5 => 'Community Engagement',
+          6 => 'Developmental Education',
+          7 => 'Dual Credit Office',
+          8 => 'Equity',
+          9 => 'Faculty Professional Development',
+          10 => 'First-Year Experience',
+          11 => 'Gatekeeper Courses',
+          12 => 'Improved Use of Data',
+          13 => 'Information Systems',
+          14 => 'Institutional Effectiveness',
+          15 => 'Institutional Research',
+          16 => 'Internal Policy Review & Update',
+          17 => 'K-14 Strategies',
+          18 => 'Learning Communities',
+          19 => 'Mentoring',
+          20 => 'Policy Change',
+          21 => 'Program Evaluation Process',
+          22 => 'Staff Engagement',
+          23 => 'Student Engagement',
+          24 => 'Student Success Course',
+          25 => 'Student Support Services',
+          26 => 'Supplemental Instruction',
+          27 => 'Testing',
+          28 => 'Tutoring',
+          29 => 'Other',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_intervention_type',
+      'label' => 'Intervention Type',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-intervention-field_legacy_id'.
+  $fields['node-intervention-field_legacy_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_legacy_id',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Import ID',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 16,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_legacy_id',
+      'label' => 'Legacy ID',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '18',
       ),
     ),
   );
@@ -606,7 +829,7 @@ function intervention_field_default_fields() {
           'year_range' => '-6:+1',
         ),
         'type' => 'date_select',
-        'weight' => '10',
+        'weight' => '9',
       ),
     ),
   );
@@ -670,7 +893,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '7',
       ),
     ),
   );
@@ -734,7 +957,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '6',
       ),
     ),
   );
@@ -757,16 +980,17 @@ function intervention_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'AUP' => 'Academically Underprepared Students',
-          'All' => 'All Students',
-          'FT' => 'Enrollment: Full Time students',
-          'ESL' => 'ESL/ESOL/ELL',
-          'Faculty' => 'Faculty and staff',
-          'Financial' => 'Financial aid status',
-          'FirstGen' => 'First Generation',
-          'FirstTime' => 'First-time students',
-          'HighSchool' => 'High School students',
-          'Other' => 'Other',
+          0 => 'All Students',
+          1 => 'Academically Underprepared Students',
+          2 => 'ESL-ESOL-ELL',
+          3 => 'Enrollment: Full Time Students',
+          4 => 'Enrollment: Part Time Students',
+          5 => 'Faculty and Staff',
+          6 => 'Financial Aid Status',
+          7 => 'First Generation',
+          8 => 'First-time Students',
+          9 => 'High School Students',
+          10 => 'Other',
         ),
         'allowed_values_function' => '',
       ),
@@ -805,7 +1029,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -814,7 +1038,7 @@ function intervention_field_default_fields() {
   $fields['node-intervention-field_target_race'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_target_race',
@@ -828,9 +1052,11 @@ function intervention_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'All' => 'All',
-          'Black' => 'Black or African American',
-          'BlackNH' => 'Black/African American non-Hispanic',
+          0 => 'All Races',
+          1 => 'American Indian or Alaska Native',
+          2 => 'Black or African American',
+          3 => 'Black or African American non-Hispanic',
+          4 => 'Other',
         ),
         'allowed_values_function' => '',
       ),
@@ -869,7 +1095,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '9',
+        'weight' => '8',
       ),
     ),
   );
@@ -948,6 +1174,10 @@ function intervention_field_default_fields() {
   t('Content Area');
   t('Description of Intervention');
   t('Ethnicity');
+  t('Import ID');
+  t('Intervention Status');
+  t('Intervention Type');
+  t('Legacy ID');
   t('Name of Institution');
   t('Outcome Indicators This Intervention Demonstrates');
   t('Promising Practice');
