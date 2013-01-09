@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Intervention Contact feature.
+ */
+
+include_once 'intervention_contact.features.inc';
