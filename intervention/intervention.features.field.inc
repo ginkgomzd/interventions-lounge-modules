@@ -79,7 +79,7 @@ function intervention_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '11',
+        'weight' => '12',
       ),
     ),
   );
@@ -178,6 +178,101 @@ function intervention_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-intervention-field_contact'.
+  $fields['node-intervention-field_contact'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_contact',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'article' => 0,
+          'atd_newsletter' => 0,
+          'brag_bar_item' => 0,
+          'college_profile' => 0,
+          'college_profile_salesforce' => 0,
+          'faq' => 0,
+          'hidden_page' => 0,
+          'intervention' => 0,
+          'intervention_contact' => 'intervention_contact',
+          'news' => 0,
+          'newsletter_component' => 0,
+          'organization' => 0,
+          'page' => 0,
+          'panel' => 0,
+          'person' => 0,
+          'press_release' => 0,
+          'resource' => 0,
+          'slideshow_image' => 0,
+          'state_policy_team' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Person to contact regarding this intervention.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 18,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_contact',
+      'label' => 'Contact',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '3',
+      ),
+    ),
+  );
+
   // Exported field: 'node-intervention-field_content_area'.
   $fields['node-intervention-field_content_area'] = array(
     'field_config' => array(
@@ -244,7 +339,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '4',
+        'weight' => '6',
       ),
     ),
   );
@@ -308,7 +403,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '19',
+        'weight' => '5',
       ),
     ),
   );
@@ -399,7 +494,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '3',
+        'weight' => '4',
       ),
     ),
   );
@@ -461,7 +556,7 @@ function intervention_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '18',
+        'weight' => '17',
       ),
     ),
   );
@@ -528,7 +623,7 @@ function intervention_field_default_fields() {
           'rows' => '3',
         ),
         'type' => 'text_textarea',
-        'weight' => '15',
+        'weight' => '16',
       ),
     ),
   );
@@ -594,7 +689,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => '13',
       ),
     ),
   );
@@ -663,7 +758,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => '15',
       ),
     ),
   );
@@ -829,7 +924,7 @@ function intervention_field_default_fields() {
           'year_range' => '-6:+1',
         ),
         'type' => 'date_select',
-        'weight' => '9',
+        'weight' => '11',
       ),
     ),
   );
@@ -893,7 +988,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '7',
+        'weight' => '9',
       ),
     ),
   );
@@ -957,7 +1052,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '8',
       ),
     ),
   );
@@ -1029,7 +1124,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '5',
+        'weight' => '7',
       ),
     ),
   );
@@ -1095,7 +1190,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '8',
+        'weight' => '10',
       ),
     ),
   );
@@ -1164,13 +1259,14 @@ function intervention_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '13',
+        'weight' => '14',
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Contact');
   t('Content Area');
   t('Description of Intervention');
   t('Ethnicity');
@@ -1180,6 +1276,7 @@ function intervention_field_default_fields() {
   t('Legacy ID');
   t('Name of Institution');
   t('Outcome Indicators This Intervention Demonstrates');
+  t('Person to contact regarding this intervention.');
   t('Promising Practice');
   t('Proportion of Target Population Served by This Intervention');
   t('Race');
