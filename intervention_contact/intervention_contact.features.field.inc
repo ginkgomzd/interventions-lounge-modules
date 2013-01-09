@@ -338,7 +338,7 @@ function intervention_contact_field_default_fields() {
         'active' => 1,
         'module' => 'masked_input',
         'settings' => array(
-          'mask' => 'jQuery("#phone").mask("(999) 999-9999 x9999");',
+          'mask' => '(999) 999-9999 x9999',
           'placeholder' => '_',
           'size' => '16',
         ),
