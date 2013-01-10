@@ -1,0 +1,96 @@
+<?php
+
+/**
+ * hook_install
+ */
+function intervention_workflow_install() {
+
+  $table = 'workbench_moderation_states';
+
+  //Moderation States:
+  db_delete($table)
+      ->condition('name', 'draft')
+          ->execute();
+
+  db_delete($table)
+      ->condition('name', 'needs_review')
+          ->execute();
+
+  db_insert($table)->fields(array(
+      'name' => 'college_approved',
+      'label' => 'College Approved',
+      'description' => 'Passed Review by College',
+      'weight' => '-9',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'name' => 'draft',
+      'label' => 'Draft',
+      'description' => 'Un-Reviewed, Data-Entry Stage',
+      'weight' => '-10',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'name' => 'college_opt_out',
+      'label' => 'College Opt-Out',
+      'description' => 'For Interventions deemed not to be published by the college.',
+      'weight' => '-11',
+  ))->execute();
+
+  //Transitions:
+  $table = 'workbench_moderation_transitions';
+  //clear all transitions (probably empty anyway)
+  db_delete($table)->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => '',
+      'to_name' =>'',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => 'draft',
+      'to_name' =>'college_approved',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => 'college_approved',
+      'to_name' =>'published',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => 'published',
+      'to_name' =>'college_opt_out',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => 'draft',
+      'to_name' =>'college_opt_out',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => 'college_approved',
+      'to_name' =>'college_opt_out',
+  ))->execute();
+
+  //Variable Table
+  //INSERT INTO `variable` VALUES ('workbench_moderation_default_state_intervention','s:5:\"draft\";');
+/*
+  db_insert('variable')->fields(array(
+      'name' => 'workbench_moderation_default_state_intervention',
+      'value' => 's:5:\"draft\";'
+  ))->execute();
+
+  db_delete('variable')->condition('name', 'node_options_intervention', '=');
+  db_insert('variable')->fields(array(
+      'name' => 'node_options_intervention',
+      'value' => 'a:2:{i:0;s:10:\"moderation\";i:1;s:8:\"revision\";}'
+  ))
+          ->execute();
+   */
+  //'additional_settings__active_tab_intervention','s:13:\"edit-workflow\";'
+
+  variable_set('workbench_moderation_default_state_intervention', 'draft');
+  variable_set('node_options_intervention', array('moderation', 'revision'));
+  variable_set('additional_settings__active_tab_intervention', 'edit-workflow');
+}
+?>
