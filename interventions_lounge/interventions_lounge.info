@@ -8,4 +8,5 @@ dependencies[] = features
 dependencies[] = college_profile
 dependencies[] = workbench_moderation
 dependencies[] = diff
+dependencies[] = intervention_workflow
 version = "7.x-1.0"
