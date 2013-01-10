@@ -26,9 +26,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'access content overview',
     'roles' => array(
       0 => 'ATD Staff Moderator',
-      1 => 'administrator',
-      2 => 'themer',
-      3 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -56,9 +53,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'create college_profile content',
     'roles' => array(
       0 => 'Core Team Lead',
-      1 => 'administrator',
-      2 => 'themer',
-      3 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -96,9 +90,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'delete own college_profile content',
     'roles' => array(
       0 => 'Core Team Lead',
-      1 => 'administrator',
-      2 => 'themer',
-      3 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -149,9 +140,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'edit own college_profile content',
     'roles' => array(
       0 => 'Core Team Lead',
-      1 => 'administrator',
-      2 => 'themer',
-      3 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -190,9 +178,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
-      3 => 'themer',
-      4 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -203,9 +188,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
-      3 => 'anonymous user',
-      4 => 'authenticated user',
     ),
     'module' => 'search_config',
   );
@@ -226,7 +208,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -237,7 +218,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -248,7 +228,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -259,7 +238,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -270,7 +248,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
     ),
     'module' => 'workbench_moderation',
   );
@@ -281,10 +258,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
-      3 => 'expert',
-      4 => 'themer',
-      5 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -295,9 +268,6 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
-      2 => 'administrator',
-      3 => 'themer',
-      4 => 'webmaster',
     ),
     'module' => 'node',
   );
