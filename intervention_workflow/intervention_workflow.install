@@ -16,6 +16,14 @@ function intervention_workflow_install() {
       ->condition('name', 'needs_review')
           ->execute();
 
+  db_delete($table)
+    ->condition('name', 'college_approved')
+          ->execute();
+
+  db_delete($table)
+    ->condition('name', 'college_opt_out')
+          ->execute();
+
   db_insert($table)->fields(array(
       'name' => 'college_approved',
       'label' => 'College Approved',
