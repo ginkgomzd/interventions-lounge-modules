@@ -10,17 +10,6 @@
 function intervention_workflow_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: access content.
-  $permissions['access content'] = array(
-    'name' => 'access content',
-    'roles' => array(
-      0 => 'administrator',
-      1 => 'anonymous user',
-      2 => 'authenticated user',
-    ),
-    'module' => 'node',
-  );
-
   // Exported permission: access content overview.
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
@@ -53,6 +42,7 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'create college_profile content',
     'roles' => array(
       0 => 'Core Team Lead',
+      1 => 'ATD Staff Moderator',
     ),
     'module' => 'node',
   );
@@ -72,8 +62,7 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'delete any college_profile content',
     'roles' => array(
       0 => 'administrator',
-      1 => 'themer',
-      2 => 'webmaster',
+      1 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -85,11 +74,19 @@ function intervention_workflow_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: delete any intervention_contact content.
+  $permissions['delete any intervention_contact content'] = array(
+    'name' => 'delete any intervention_contact content',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: delete own college_profile content.
   $permissions['delete own college_profile content'] = array(
     'name' => 'delete own college_profile content',
     'roles' => array(
       0 => 'Core Team Lead',
+      1 => 'ATD Staff Moderator',
     ),
     'module' => 'node',
   );
@@ -97,6 +94,16 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: delete own intervention content.
   $permissions['delete own intervention content'] = array(
     'name' => 'delete own intervention content',
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+      1 => 'Core Team Lead',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: delete own intervention_contact content.
+  $permissions['delete own intervention_contact content'] = array(
+    'name' => 'delete own intervention_contact content',
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
@@ -122,6 +129,7 @@ function intervention_workflow_user_default_permissions() {
       0 => 'administrator',
       1 => 'themer',
       2 => 'webmaster',
+      3 => 'ATD Staff Moderator',
     ),
     'module' => 'node',
   );
@@ -129,6 +137,15 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: edit any intervention content.
   $permissions['edit any intervention content'] = array(
     'name' => 'edit any intervention content',
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: edit any intervention_contact content.
+  $permissions['edit any intervention_contact content'] = array(
+    'name' => 'edit any intervention_contact content',
     'roles' => array(
       0 => 'ATD Staff Moderator',
     ),
@@ -153,6 +170,26 @@ function intervention_workflow_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: edit own intervention_contact content.
+  $permissions['edit own intervention_contact content'] = array(
+    'name' => 'edit own intervention_contact content',
+    'roles' => array(
+      0 => 'Core Team Lead',
+    ),
+    'module' => 'node',
+  );
+
+  // Exported permission: moderate content from college_approved to college_opt_out.
+  $permissions['moderate content from college_approved to college_opt_out'] = array(
+    'name' => 'moderate content from college_approved to college_opt_out',
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+      1 => 'Core Team Lead',
+      2 => 'administrator',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: moderate content from college_approved to published.
   $permissions['moderate content from college_approved to published'] = array(
     'name' => 'moderate content from college_approved to published',
@@ -165,6 +202,26 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: moderate content from draft to college_approved.
   $permissions['moderate content from draft to college_approved'] = array(
     'name' => 'moderate content from draft to college_approved',
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+      1 => 'Core Team Lead',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: moderate content from draft to college_opt_out.
+  $permissions['moderate content from draft to college_opt_out'] = array(
+    'name' => 'moderate content from draft to college_opt_out',
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+      1 => 'Core Team Lead',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: moderate content from published to college_opt_out.
+  $permissions['moderate content from published to college_opt_out'] = array(
+    'name' => 'moderate content from published to college_opt_out',
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
@@ -227,7 +284,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'view all unpublished content',
     'roles' => array(
       0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
     ),
     'module' => 'workbench_moderation',
   );
