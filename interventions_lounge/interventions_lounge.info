@@ -9,4 +9,5 @@ dependencies[] = college_profile
 dependencies[] = workbench_moderation
 dependencies[] = diff
 dependencies[] = intervention_workflow
+dependencies[] = pathauto_persist
 version = "7.x-1.0"
