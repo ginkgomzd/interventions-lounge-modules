@@ -1015,7 +1015,6 @@ function intervention_field_default_fields() {
         'allowed_values' => array(
           'Males' => 'Males only',
           'Females' => 'Females only',
-          'Both' => 'n/a',
         ),
         'allowed_values_function' => '',
       ),
