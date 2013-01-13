@@ -2,7 +2,7 @@ name = Interventions Lounge
 description = Meta-Package for the interventions lounge
 core = 7.x
 package = Interventions Lounge
-;dependencies[] = salesforce (>= 7.x-3.0-alpha2)
+dependencies[] = salesforce (>= 7.x-3.0-alpha2)
 dependencies[] = intervention
 dependencies[] = features
 dependencies[] = college_profile
