@@ -10,4 +10,5 @@ dependencies[] = workbench_moderation
 dependencies[] = diff
 dependencies[] = intervention_workflow
 dependencies[] = pathauto_persist
+dependencies[] = logintoboggan
 version = "7.x-1.0"
