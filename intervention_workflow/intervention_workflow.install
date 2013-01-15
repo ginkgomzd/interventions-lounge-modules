@@ -81,23 +81,7 @@ function intervention_workflow_install() {
   ))->execute();
 
   //Variable Table
-  //INSERT INTO `variable` VALUES ('workbench_moderation_default_state_intervention','s:5:\"draft\";');
-/*
-  db_insert('variable')->fields(array(
-      'name' => 'workbench_moderation_default_state_intervention',
-      'value' => 's:5:\"draft\";'
-  ))->execute();
-
-  db_delete('variable')->condition('name', 'node_options_intervention', '=');
-  db_insert('variable')->fields(array(
-      'name' => 'node_options_intervention',
-      'value' => 'a:2:{i:0;s:10:\"moderation\";i:1;s:8:\"revision\";}'
-  ))
-          ->execute();
-   */
-  //'additional_settings__active_tab_intervention','s:13:\"edit-workflow\";'
-
-  variable_set('workbench_moderation_default_state_intervention', 'draft');
+   variable_set('workbench_moderation_default_state_intervention', 'draft');
   variable_set('node_options_intervention', array('moderation', 'revision'));
   variable_set('additional_settings__active_tab_intervention', 'edit-workflow');
 }
