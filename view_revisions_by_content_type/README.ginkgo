@@ -1,0 +1,6 @@
+This module is an unofficial D6 -> D7 port of the "View revisions
+by content type" module, which lives at
+http://drupal.org/project/view_revisions_by_content_type.
+It was downloaded on 01/15/2013 from http://drupal.org/node/1211568.
+You probably don't want to update this module unless you
+have a very good reason to do so.

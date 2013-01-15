@@ -5,6 +5,7 @@ php = 5.2.4
 dependencies[] = features
 dependencies[] = search_config
 dependencies[] = workbench_moderation
+dependencies[] = view_revisions_by_content_type
 features[features_api][] = api:1
 features[user_permission][] = access content
 features[user_permission][] = access content overview
