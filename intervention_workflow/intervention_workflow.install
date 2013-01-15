@@ -7,7 +7,7 @@ function intervention_workflow_install() {
 
   $table = 'workbench_moderation_states';
 
-  //Moderation States:
+  //## Moderation States:
   db_delete($table)
       ->condition('name', 'draft')
           ->execute();
@@ -45,7 +45,7 @@ function intervention_workflow_install() {
       'weight' => '-11',
   ))->execute();
 
-  //Transitions:
+  //## Transitions:
   $table = 'workbench_moderation_transitions';
   //clear all transitions (probably empty anyway)
   db_delete($table)->execute();
@@ -80,9 +80,10 @@ function intervention_workflow_install() {
       'to_name' =>'college_opt_out',
   ))->execute();
 
-  //Variable Table
+  //## Variable Table
    variable_set('workbench_moderation_default_state_intervention', 'draft');
   variable_set('node_options_intervention', array('moderation', 'revision'));
   variable_set('additional_settings__active_tab_intervention', 'edit-workflow');
+
 }
 ?>
