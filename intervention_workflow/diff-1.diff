@@ -1,0 +1,101 @@
+diff --git a/intervention_workflow/intervention_workflow.features.user_permission.inc b/intervention_workflow/intervention_workflow.features.user_permission.inc
+index 749e531..e3e0da8 100644
+--- a/intervention_workflow/intervention_workflow.features.user_permission.inc
++++ b/intervention_workflow/intervention_workflow.features.user_permission.inc
+@@ -85,6 +85,13 @@ function intervention_workflow_user_default_permissions() {
+     'module' => 'node',
+   );
+ 
++  // Exported permission: delete any intervention_contact content.
++  $permissions['delete any intervention_contact content'] = array(
++    'name' => 'delete any intervention_contact content',
++    'roles' => array(),
++    'module' => 'node',
++  );
++
+   // Exported permission: delete own college_profile content.
+   $permissions['delete own college_profile content'] = array(
+     'name' => 'delete own college_profile content',
+@@ -104,6 +111,16 @@ function intervention_workflow_user_default_permissions() {
+     'module' => 'node',
+   );
+ 
++  // Exported permission: delete own intervention_contact content.
++  $permissions['delete own intervention_contact content'] = array(
++    'name' => 'delete own intervention_contact content',
++    'roles' => array(
++      0 => 'ATD Staff Moderator',
++      1 => 'Core Team Lead',
++    ),
++    'module' => 'node',
++  );
++
+   // Exported permission: delete revisions.
+   $permissions['delete revisions'] = array(
+     'name' => 'delete revisions',
+@@ -135,6 +152,15 @@ function intervention_workflow_user_default_permissions() {
+     'module' => 'node',
+   );
+ 
++  // Exported permission: edit any intervention_contact content.
++  $permissions['edit any intervention_contact content'] = array(
++    'name' => 'edit any intervention_contact content',
++    'roles' => array(
++      0 => 'ATD Staff Moderator',
++    ),
++    'module' => 'node',
++  );
++
+   // Exported permission: edit own college_profile content.
+   $permissions['edit own college_profile content'] = array(
+     'name' => 'edit own college_profile content',
+@@ -153,6 +179,24 @@ function intervention_workflow_user_default_permissions() {
+     'module' => 'node',
+   );
+ 
++  // Exported permission: edit own intervention_contact content.
++  $permissions['edit own intervention_contact content'] = array(
++    'name' => 'edit own intervention_contact content',
++    'roles' => array(
++      0 => 'Core Team Lead',
++    ),
++    'module' => 'node',
++  );
++
++  // Exported permission: moderate content from college_approved to college_opt_out.
++  $permissions['moderate content from college_approved to college_opt_out'] = array(
++    'name' => 'moderate content from college_approved to college_opt_out',
++    'roles' => array(
++      0 => 'administrator',
++    ),
++    'module' => 'workbench_moderation',
++  );
++
+   // Exported permission: moderate content from college_approved to published.
+   $permissions['moderate content from college_approved to published'] = array(
+     'name' => 'moderate content from college_approved to published',
+@@ -172,6 +216,24 @@ function intervention_workflow_user_default_permissions() {
+     'module' => 'workbench_moderation',
+   );
+ 
++  // Exported permission: moderate content from draft to college_opt_out.
++  $permissions['moderate content from draft to college_opt_out'] = array(
++    'name' => 'moderate content from draft to college_opt_out',
++    'roles' => array(
++      0 => 'administrator',
++    ),
++    'module' => 'workbench_moderation',
++  );
++
++  // Exported permission: moderate content from published to college_opt_out.
++  $permissions['moderate content from published to college_opt_out'] = array(
++    'name' => 'moderate content from published to college_opt_out',
++    'roles' => array(
++      0 => 'administrator',
++    ),
++    'module' => 'workbench_moderation',
++  );
++
+   // Exported permission: revert revisions.
+   $permissions['revert revisions'] = array(
+     'name' => 'revert revisions',

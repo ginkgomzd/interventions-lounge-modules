@@ -6,6 +6,8 @@ package = Interventions Lounge
 ;dependencies[] = salesforce (>= 7.x-3.0-alpha2)
 dependencies[] = intervention
 dependencies[] = features
+; features extra block - from features_extra package:
+dependencies[] = fe_block
 dependencies[] = college_profile
 dependencies[] = workbench_moderation
 dependencies[] = diff
