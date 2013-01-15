@@ -2,6 +2,7 @@ name = Interventions Lounge
 description = Meta-Package for the interventions lounge
 core = 7.x
 package = Interventions Lounge
+; commented out because it's handled in the import script
 ;dependencies[] = salesforce (>= 7.x-3.0-alpha2)
 dependencies[] = intervention
 dependencies[] = features
@@ -9,4 +10,6 @@ dependencies[] = college_profile
 dependencies[] = workbench_moderation
 dependencies[] = diff
 dependencies[] = intervention_workflow
+dependencies[] = pathauto_persist
+dependencies[] = logintoboggan
 version = "7.x-1.0"

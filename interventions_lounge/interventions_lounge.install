@@ -1,0 +1,11 @@
+<?php
+/*
+ * Implemention of hook_enable.
+ *
+ * Configure Login Toboggan. The primary goal here is to allow email addresses
+ * as user logins.
+ */
+function interventions_lounge_enable () {
+  variable_set('logintoboggan_login_with_email', 1);
+}
+?>
