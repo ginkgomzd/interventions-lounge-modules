@@ -10,6 +10,17 @@
 function intervention_workflow_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: access content.
+  $permissions['access content'] = array(
+    'name' => 'access content',
+    'roles' => array(
+      0 => 'administrator',
+      1 => 'anonymous user',
+      2 => 'authenticated user',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: access content overview.
   $permissions['access content overview'] = array(
     'name' => 'access content overview',
@@ -41,8 +52,7 @@ function intervention_workflow_user_default_permissions() {
   $permissions['create college_profile content'] = array(
     'name' => 'create college_profile content',
     'roles' => array(
-      0 => 'Core Team Lead',
-      1 => 'ATD Staff Moderator',
+      0 => 'ATD Staff Moderator',
     ),
     'module' => 'node',
   );
@@ -52,7 +62,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'create intervention content',
     'roles' => array(
       0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
     ),
     'module' => 'node',
   );
@@ -70,14 +79,18 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: delete any intervention content.
   $permissions['delete any intervention content'] = array(
     'name' => 'delete any intervention content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: delete any intervention_contact content.
   $permissions['delete any intervention_contact content'] = array(
     'name' => 'delete any intervention_contact content',
-    'roles' => array(),
+    'roles' => array(
+      0 => 'ATD Staff Moderator',
+    ),
     'module' => 'node',
   );
 
@@ -85,8 +98,7 @@ function intervention_workflow_user_default_permissions() {
   $permissions['delete own college_profile content'] = array(
     'name' => 'delete own college_profile content',
     'roles' => array(
-      0 => 'Core Team Lead',
-      1 => 'ATD Staff Moderator',
+      0 => 'ATD Staff Moderator',
     ),
     'module' => 'node',
   );
@@ -95,8 +107,7 @@ function intervention_workflow_user_default_permissions() {
   $permissions['delete own intervention content'] = array(
     'name' => 'delete own intervention content',
     'roles' => array(
-      0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
+      0 => 'Core Team Lead',
     ),
     'module' => 'node',
   );
@@ -104,10 +115,7 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: delete own intervention_contact content.
   $permissions['delete own intervention_contact content'] = array(
     'name' => 'delete own intervention_contact content',
-    'roles' => array(
-      0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -126,10 +134,10 @@ function intervention_workflow_user_default_permissions() {
   $permissions['edit any college_profile content'] = array(
     'name' => 'edit any college_profile content',
     'roles' => array(
-      0 => 'administrator',
-      1 => 'themer',
-      2 => 'webmaster',
-      3 => 'ATD Staff Moderator',
+      0 => 'ATD Staff Moderator',
+      1 => 'administrator',
+      2 => 'themer',
+      3 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -155,9 +163,7 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: edit own college_profile content.
   $permissions['edit own college_profile content'] = array(
     'name' => 'edit own college_profile content',
-    'roles' => array(
-      0 => 'Core Team Lead',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -173,9 +179,7 @@ function intervention_workflow_user_default_permissions() {
   // Exported permission: edit own intervention_contact content.
   $permissions['edit own intervention_contact content'] = array(
     'name' => 'edit own intervention_contact content',
-    'roles' => array(
-      0 => 'Core Team Lead',
-    ),
+    'roles' => array(),
     'module' => 'node',
   );
 
@@ -234,7 +238,8 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'revert revisions',
     'roles' => array(
       0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
+      1 => 'administrator',
+      2 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -293,7 +298,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'view moderation history',
     'roles' => array(
       0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
     ),
     'module' => 'workbench_moderation',
   );
@@ -303,7 +307,6 @@ function intervention_workflow_user_default_permissions() {
     'name' => 'view moderation messages',
     'roles' => array(
       0 => 'ATD Staff Moderator',
-      1 => 'Core Team Lead',
     ),
     'module' => 'workbench_moderation',
   );
@@ -314,6 +317,8 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
+      2 => 'administrator',
+      3 => 'webmaster',
     ),
     'module' => 'node',
   );
@@ -324,6 +329,8 @@ function intervention_workflow_user_default_permissions() {
     'roles' => array(
       0 => 'ATD Staff Moderator',
       1 => 'Core Team Lead',
+      2 => 'administrator',
+      3 => 'webmaster',
     ),
     'module' => 'node',
   );

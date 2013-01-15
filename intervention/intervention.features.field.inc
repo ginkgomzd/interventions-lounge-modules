@@ -79,7 +79,7 @@ function intervention_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '12',
+        'weight' => '1',
       ),
     ),
   );
@@ -92,6 +92,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_college_reference',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -117,6 +120,7 @@ function intervention_field_default_fields() {
           'faq' => 0,
           'hidden_page' => 0,
           'intervention' => 0,
+          'intervention_contact' => 0,
           'news' => 0,
           'newsletter_component' => 0,
           'organization' => 0,
@@ -148,7 +152,7 @@ function intervention_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '2',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -173,7 +177,7 @@ function intervention_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '2',
+        'weight' => '16',
       ),
     ),
   );
@@ -186,6 +190,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_contact',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'nid' => array(
           'columns' => array(
@@ -245,7 +252,7 @@ function intervention_field_default_fields() {
             'node_reference_view_mode' => 'full',
           ),
           'type' => 'node_reference_node',
-          'weight' => '18',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -270,7 +277,7 @@ function intervention_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '3',
+        'weight' => '17',
       ),
     ),
   );
@@ -320,7 +327,7 @@ function intervention_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -380,11 +387,11 @@ function intervention_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '17',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -405,7 +412,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '5',
+        'weight' => '4',
       ),
     ),
   );
@@ -471,11 +478,11 @@ function intervention_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '15',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -496,7 +503,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -509,6 +516,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_legacy_id',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -533,7 +543,7 @@ function intervention_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '16',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -558,7 +568,7 @@ function intervention_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '17',
+        'weight' => '18',
       ),
     ),
   );
@@ -625,7 +635,7 @@ function intervention_field_default_fields() {
           'rows' => '3',
         ),
         'type' => 'text_textarea',
-        'weight' => '16',
+        'weight' => '15',
       ),
     ),
   );
@@ -638,6 +648,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_promising_practice',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -670,7 +683,7 @@ function intervention_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '16',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -691,7 +704,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -760,7 +773,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '14',
       ),
     ),
   );
@@ -811,7 +824,7 @@ function intervention_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -843,7 +856,7 @@ function intervention_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_select',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -894,7 +907,7 @@ function intervention_field_default_fields() {
             'multiple_to' => '',
           ),
           'type' => 'date_default',
-          'weight' => '10',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -926,7 +939,7 @@ function intervention_field_default_fields() {
           'year_range' => '-6:+1',
         ),
         'type' => 'date_select',
-        'weight' => '11',
+        'weight' => '2',
       ),
     ),
   );
@@ -969,7 +982,7 @@ function intervention_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1033,7 +1046,7 @@ function intervention_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '7',
+          'weight' => '8',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1105,7 +1118,7 @@ function intervention_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1171,7 +1184,7 @@ function intervention_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '8',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1192,7 +1205,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '10',
+        'weight' => '11',
       ),
     ),
   );
@@ -1205,6 +1218,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_why_promising',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1261,7 +1277,7 @@ function intervention_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '14',
+        'weight' => '13',
       ),
     ),
   );
