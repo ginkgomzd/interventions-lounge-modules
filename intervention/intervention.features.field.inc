@@ -622,7 +622,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_outcome_indicators',
-      'label' => 'Outcome Indicators This Intervention Demonstrates',
+      'label' => 'Outcome Indicators This Intervention Targets',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -745,7 +745,9 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => '<p><strong>Some:</strong> Intervention(s) will be considered to be serving “Some” students when serving 25% or less of the target student population.</p>
+<p><strong>More:</strong> Intervention(s) will be considered to be serving “More” students when serving 25.1% to 60% of the target student population.</p>
+<p><strong>Most:</strong> Intervention(s) will be considered to be serving “Most” students when serving more than 60% of the target student population.</p>',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1283,6 +1285,9 @@ function intervention_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<p><strong>Some:</strong> Intervention(s) will be considered to be serving “Some” students when serving 25% or less of the target student population.</p>
+<p><strong>More:</strong> Intervention(s) will be considered to be serving “More” students when serving 25.1% to 60% of the target student population.</p>
+<p><strong>Most:</strong> Intervention(s) will be considered to be serving “Most” students when serving more than 60% of the target student population.</p>');
   t('Contact');
   t('Content Area');
   t('Description of Intervention');
@@ -1292,7 +1297,7 @@ function intervention_field_default_fields() {
   t('Intervention Type');
   t('Legacy ID');
   t('Name of Institution');
-  t('Outcome Indicators This Intervention Demonstrates');
+  t('Outcome Indicators This Intervention Targets');
   t('Person to contact regarding this intervention.');
   t('Promising Practice');
   t('Proportion of Target Population Served by This Intervention');
