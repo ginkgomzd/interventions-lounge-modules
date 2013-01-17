@@ -1,6 +1,8 @@
 <?php
 
 function intervention_install () {
+  // clean up mess on prod
+  node_type_delete('intervention');
   node_type_delete('mx_intervention');
 
   variable_set('additional_settings__active_tab_intervention', 'edit-menu');
@@ -16,7 +18,7 @@ function intervention_install () {
   variable_set('diff_view_mode_preview_node_intervention', "full");
   variable_set('field_bundle_settings_node__intervention',
           array(
-            "view_modes" => 
+            "view_modes" =>
             array(
                "teaser" => array("custom_settings" => TRUE),
                "full" => array("custom_settings" => FALSE),
@@ -59,9 +61,9 @@ function intervention_install () {
              "locpick" => array("collect"=>"1", "weight"=>"20"),
          ),
     ),
-    
+
     "display" => array("weight" => "0", "hide" => array("name"=> 0, "street"=>0, "additional" => 0, "city"=> 0, "province" => 0, "postal_code"=> 0, "country"=> 0, "locpick"=> 0, "province_name"=> 0, "country_name"=> 0, "map_link"=> 0, "coords"=>0), "teaser" => 0, "full" => 0),
-    
+
     "rss" => array("mode" => "simple")
           )
   );
