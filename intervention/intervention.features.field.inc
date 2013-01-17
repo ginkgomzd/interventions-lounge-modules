@@ -873,45 +873,40 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_start_year',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'date',
-      'settings' => array(
-        'cache_count' => '4',
-        'cache_enabled' => 0,
-        'granularity' => array(
-          'day' => 0,
-          'hour' => 0,
-          'minute' => 0,
-          'month' => 0,
-          'second' => 0,
-          'year' => 'year',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
         ),
-        'timezone_db' => '',
-        'todate' => '',
-        'tz_handling' => 'none',
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '9',
       ),
       'translatable' => '0',
-      'type' => 'datetime',
+      'type' => 'text',
     ),
     'field_instance' => array(
       'bundle' => 'intervention',
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'YYYY-YYYY
+',
       'display' => array(
         'default' => array(
-          'label' => 'inline',
-          'module' => 'date',
-          'settings' => array(
-            'format_type' => 'long',
-            'fromto' => 'both',
-            'multiple_from' => '',
-            'multiple_number' => '',
-            'multiple_to' => '',
-          ),
-          'type' => 'date_default',
-          'weight' => '1',
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 17,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -922,27 +917,19 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_start_year',
-      'label' => 'Start Year',
+      'label' => 'Start School Year',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'now',
-        'default_value2' => 'same',
-        'default_value_code' => '',
-        'default_value_code2' => '',
+        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'date',
+        'module' => 'text',
         'settings' => array(
-          'increment' => '15',
-          'input_format' => 'm/d/Y - H:i:s',
-          'input_format_custom' => '',
-          'label_position' => 'above',
-          'text_parts' => array(),
-          'year_range' => '-6:+1',
+          'size' => '10',
         ),
-        'type' => 'date_select',
+        'type' => 'text_textfield',
         'weight' => '2',
       ),
     ),
@@ -1305,10 +1292,12 @@ function intervention_field_default_fields() {
   t('Proportion of Target Population Served by This Intervention');
   t('Race');
   t('Reporting Year');
-  t('Start Year');
+  t('Start School Year');
   t('Target Gender');
   t('Target Population');
   t('Why This Intervention Demonstrates Promise');
+  t('YYYY-YYYY
+');
 
   return $fields;
 }
