@@ -320,7 +320,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'ctrl-click to select multiple',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -477,7 +477,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'ctrl-click to select multiple',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -608,7 +608,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'ctrl-click to select multiple',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1105,7 +1105,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'ctrl-click to select multiple',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1175,7 +1175,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => 'ctrl-click to select multiple',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1306,6 +1306,7 @@ function intervention_field_default_fields() {
   t('Why This Intervention Demonstrates Promise');
   t('YYYY-YYYY
 ');
+  t('ctrl-click to select multiple');
 
   return $fields;
 }
