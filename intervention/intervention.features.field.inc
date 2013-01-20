@@ -964,7 +964,11 @@ function intervention_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'intervention',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'All',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -985,7 +989,7 @@ function intervention_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_target_ethnicity',
       'label' => 'Ethnicity',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
