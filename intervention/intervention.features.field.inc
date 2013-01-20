@@ -579,28 +579,30 @@ function intervention_field_default_fields() {
   $fields['node-intervention-field_outcome_indicators'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_outcome_indicators',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
+      'foreign keys' => array(),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'value' => array(
+          0 => 'value',
         ),
       ),
       'locked' => '0',
-      'module' => 'text',
-      'settings' => array(),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Complete the courses they take with a grade of "C" or better',
+          1 => 'Earn a certificate or associate degree',
+          2 => 'Enroll in and successfully complete the initial college-level or gateway courses in subjects such as Math and English',
+          3 => 'Persistence from one term to the next',
+          4 => 'Successfully complete remedial or developmental instruction and advance to credit-bearing courses',
+        ),
+        'allowed_values_function' => '',
+      ),
       'translatable' => '0',
-      'type' => 'text_long',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'intervention',
@@ -610,10 +612,10 @@ function intervention_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '13',
+          'type' => 'list_default',
+          'weight' => 18,
         ),
         'teaser' => array(
           'label' => 'above',
@@ -627,16 +629,13 @@ function intervention_field_default_fields() {
       'label' => 'Outcome Indicators This Intervention Targets',
       'required' => 0,
       'settings' => array(
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '3',
-        ),
-        'type' => 'text_textarea',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
         'weight' => '15',
       ),
     ),
