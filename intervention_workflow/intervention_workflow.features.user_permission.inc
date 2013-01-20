@@ -203,6 +203,24 @@ function intervention_workflow_user_default_permissions() {
     'module' => 'workbench_moderation',
   );
 
+  // Exported permission: moderate content from college_opt_out to college_approved.
+  $permissions['moderate content from college_opt_out to college_approved'] = array(
+    'name' => 'moderate content from college_opt_out to college_approved',
+    'roles' => array(
+      0 => 'Core Team Lead',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
+  // Exported permission: moderate content from college_opt_out to draft.
+  $permissions['moderate content from college_opt_out to draft'] = array(
+    'name' => 'moderate content from college_opt_out to draft',
+    'roles' => array(
+      0 => 'Core Team Lead',
+    ),
+    'module' => 'workbench_moderation',
+  );
+
   // Exported permission: moderate content from draft to college_approved.
   $permissions['moderate content from draft to college_approved'] = array(
     'name' => 'moderate content from draft to college_approved',
