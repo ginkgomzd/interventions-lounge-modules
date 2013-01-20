@@ -1018,6 +1018,7 @@ function intervention_field_default_fields() {
         'allowed_values' => array(
           'Males' => 'Males only',
           'Females' => 'Females only',
+          'All' => 'All',
         ),
         'allowed_values_function' => '',
       ),
@@ -1026,7 +1027,11 @@ function intervention_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'intervention',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => 'All',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1047,7 +1052,7 @@ function intervention_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_target_gender',
       'label' => 'Target Gender',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
