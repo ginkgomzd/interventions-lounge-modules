@@ -307,6 +307,7 @@ function intervention_field_default_fields() {
           4 => 'English',
           5 => 'Humanities',
           6 => 'Math',
+          10 => 'Psychology',
           7 => 'Reading',
           8 => 'Science',
           9 => 'Student Success',
