@@ -80,6 +80,16 @@ function intervention_workflow_install() {
       'to_name' =>'college_opt_out',
   ))->execute();
 
+  db_insert($table)->fields(array(
+      'from_name' => 'college_opt_out',
+      'to_name' =>'draft',
+  ))->execute();
+
+  db_insert($table)->fields(array(
+      'from_name' => 'college_opt_out',
+      'to_name' =>'college_approved',
+  ))->execute();
+
   //## Variable Table
    variable_set('workbench_moderation_default_state_intervention', 'draft');
   variable_set('node_options_intervention', array('moderation', 'revision'));
