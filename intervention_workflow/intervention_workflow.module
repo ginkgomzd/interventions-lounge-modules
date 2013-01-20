@@ -6,6 +6,35 @@
 
 include_once 'intervention_workflow.features.inc';
 
+function intervention_workflow_default_rules_configuration() {
+    $configs = array();
+    $export = '
+        { "rules_intervention_visibility" : {
+            "LABEL" : "Intervention Visibility",
+            "PLUGIN" : "reaction rule",
+            "REQUIRES" : [ "rules" ],
+            "ON" : [ "node_view" ],
+            "IF" : [
+              { "node_is_of_type" : {
+                  "node" : [ "node" ],
+                  "type" : { "value" : { "intervention" : "intervention" } }
+                }
+              },
+              { "NOT user_has_role" : {
+                  "account" : [ "site:current-user" ],
+                  "roles" : { "value" : { "9" : "9", "8" : "8" } },
+                  "operation" : "OR"
+                }
+              }
+            ],
+            "DO" : [ { "redirect" : { "url" : "intervention_coming_soon" } } ]
+          }
+        }
+    ';
+    $configs['rules_intervention_visibility'] = rules_import($export);
+    return $configs;
+}
+
 function intervention_workflow_views_default_views_alter($views) {
 /*$view = new view;
 $view->name = 'workbench_moderation';
@@ -15,11 +44,11 @@ $view->base_table = 'node_revision';
 $view->human_name = 'workbench_moderation';
 $view->core = 7;
 $view->api_version = '3.0';
-$view->disabled = FALSE; 
+$view->disabled = FALSE;
 */
 
 $view =& $views['workbench_moderation'];
-  
+
 /* Display: Defaults */
 $handler =& $view->display['default'];
 $handler->display->display_options['title'] = 'Content I\'ve Edited';
