@@ -4,6 +4,8 @@
  * Drupal needs this blank file.
  */
 
+include_once 'intervention_workflow.features.inc';
+
 function intervention_workflow_views_default_views_alter($views) {
 /*$view = new view;
 $view->name = 'workbench_moderation';
