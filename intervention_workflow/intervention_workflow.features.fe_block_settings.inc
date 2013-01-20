@@ -17,6 +17,9 @@ function intervention_workflow_default_fe_block_settings() {
     'block-interventions_directions' => array(
       'machine_name' => 'interventions_directions',
       'module' => 'block',
+      'node_type' => array(
+        'intervention' => TRUE,
+      ),
     ),
     'block-interventions_moderator' => array(
       'machine_name' => 'interventions_moderator',
@@ -25,21 +28,39 @@ function intervention_workflow_default_fe_block_settings() {
     'block-my_interventions' => array(
       'machine_name' => 'my_interventions',
       'module' => 'block',
+      'node_type' => array(
+        'intervention' => TRUE,
+        'intervention_contact' => TRUE,
+      ),
     ),
   );
 
   // ATD
   $theme = array();
 
-  $theme['block-interventions_moderator'] = array(
+  $theme['block-interventions_directions'] = array(
     'module' => 'block',
     'theme' => 'ATD',
     'status' => '1',
-    'weight' => '-26',
+    'weight' => '-27',
     'region' => 'sidebar_second',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
+    'title' => 'Directions',
+    'cache' => -1,
+    'machine_name' => 'interventions_directions',
+  );
+
+  $theme['block-interventions_moderator'] = array(
+    'module' => 'block',
+    'theme' => 'ATD',
+    'status' => '1',
+    'weight' => '-31',
+    'region' => 'sidebar_second',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '<front>',
     'title' => 'Interventions Moderator',
     'cache' => -1,
     'machine_name' => 'interventions_moderator',
@@ -49,28 +70,14 @@ function intervention_workflow_default_fe_block_settings() {
     'module' => 'block',
     'theme' => 'ATD',
     'status' => '1',
-    'weight' => '-25',
+    'weight' => '-29',
     'region' => 'sidebar_second',
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'My Interventions',
+    'title' => 'Interventions Review',
     'cache' => -1,
     'machine_name' => 'my_interventions',
-  );
-
-  $theme['block-interventions_directions'] = array(
-    'module' => 'block',
-    'theme' => 'ATD',
-    'status' => '1',
-    'weight' => '-24',
-    'region' => 'sidebar_second',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => 'Directions',
-    'cache' => -1,
-    'machine_name' => 'interventions_directions',
   );
 
   $export['theme']['ATD'] = $theme;
@@ -78,7 +85,7 @@ function intervention_workflow_default_fe_block_settings() {
   // bartik
   $theme = array();
 
-  $theme['block-interventions_moderator'] = array(
+  $theme['block-interventions_directions'] = array(
     'module' => 'block',
     'theme' => 'bartik',
     'status' => 0,
@@ -87,6 +94,20 @@ function intervention_workflow_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
+    'title' => 'Directions',
+    'cache' => -1,
+    'machine_name' => 'interventions_directions',
+  );
+
+  $theme['block-interventions_moderator'] = array(
+    'module' => 'block',
+    'theme' => 'bartik',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '<front>',
     'title' => 'Interventions Moderator',
     'cache' => -1,
     'machine_name' => 'interventions_moderator',
@@ -101,23 +122,9 @@ function intervention_workflow_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'My Interventions',
+    'title' => 'Interventions Review',
     'cache' => -1,
     'machine_name' => 'my_interventions',
-  );
-
-  $theme['block-interventions_directions'] = array(
-    'module' => 'block',
-    'theme' => 'bartik',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => 'Directions',
-    'cache' => -1,
-    'machine_name' => 'interventions_directions',
   );
 
   $export['theme']['bartik'] = $theme;
@@ -125,7 +132,7 @@ function intervention_workflow_default_fe_block_settings() {
   // seven
   $theme = array();
 
-  $theme['block-interventions_moderator'] = array(
+  $theme['block-interventions_directions'] = array(
     'module' => 'block',
     'theme' => 'seven',
     'status' => 0,
@@ -134,6 +141,20 @@ function intervention_workflow_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
+    'title' => 'Directions',
+    'cache' => -1,
+    'machine_name' => 'interventions_directions',
+  );
+
+  $theme['block-interventions_moderator'] = array(
+    'module' => 'block',
+    'theme' => 'seven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '<front>',
     'title' => 'Interventions Moderator',
     'cache' => -1,
     'machine_name' => 'interventions_moderator',
@@ -148,23 +169,9 @@ function intervention_workflow_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'My Interventions',
+    'title' => 'Interventions Review',
     'cache' => -1,
     'machine_name' => 'my_interventions',
-  );
-
-  $theme['block-interventions_directions'] = array(
-    'module' => 'block',
-    'theme' => 'seven',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => 'Directions',
-    'cache' => -1,
-    'machine_name' => 'interventions_directions',
   );
 
   $export['theme']['seven'] = $theme;
@@ -172,7 +179,7 @@ function intervention_workflow_default_fe_block_settings() {
   // zen
   $theme = array();
 
-  $theme['block-interventions_moderator'] = array(
+  $theme['block-interventions_directions'] = array(
     'module' => 'block',
     'theme' => 'zen',
     'status' => 0,
@@ -181,6 +188,20 @@ function intervention_workflow_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
+    'title' => 'Directions',
+    'cache' => -1,
+    'machine_name' => 'interventions_directions',
+  );
+
+  $theme['block-interventions_moderator'] = array(
+    'module' => 'block',
+    'theme' => 'zen',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '<front>',
     'title' => 'Interventions Moderator',
     'cache' => -1,
     'machine_name' => 'interventions_moderator',
@@ -195,23 +216,9 @@ function intervention_workflow_default_fe_block_settings() {
     'custom' => '0',
     'visibility' => '0',
     'pages' => '',
-    'title' => 'My Interventions',
+    'title' => 'Interventions Review',
     'cache' => -1,
     'machine_name' => 'my_interventions',
-  );
-
-  $theme['block-interventions_directions'] = array(
-    'module' => 'block',
-    'theme' => 'zen',
-    'status' => 0,
-    'weight' => '0',
-    'region' => '',
-    'custom' => '0',
-    'visibility' => '0',
-    'pages' => '',
-    'title' => 'Directions',
-    'cache' => -1,
-    'machine_name' => 'interventions_directions',
   );
 
   $export['theme']['zen'] = $theme;
