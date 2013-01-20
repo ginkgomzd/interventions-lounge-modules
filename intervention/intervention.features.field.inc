@@ -383,7 +383,11 @@ function intervention_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'intervention',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'value' => '0',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -404,7 +408,7 @@ function intervention_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_intervention_status',
       'label' => 'Intervention Status',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
