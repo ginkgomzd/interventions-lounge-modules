@@ -5,3 +5,17 @@
  */
 
 include_once 'intervention.features.inc';
+
+/**
+ * Implementation of hook_clone_node_alter().
+ */
+function intervention_clone_node_alter(&$node, $context) {
+
+  $orig = $context['original_node'];
+  if ($orig->type == 'intervention') {
+    $node->title = $orig->title;
+
+    $year = (int) substr($orig->field_reporting_year[LANGUAGE_NONE][0]['value'], 0, 4);
+    $node->field_reporting_year[LANGUAGE_NONE][0]['value'] = ++$year . '-01-01 00:00:00';
+  }
+}

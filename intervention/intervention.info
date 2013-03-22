@@ -9,6 +9,7 @@ dependencies[] = field_validation
 dependencies[] = field_validation_ui
 dependencies[] = intervention_contact
 dependencies[] = list
+dependencies[] = node_clone
 dependencies[] = node_reference
 dependencies[] = number
 dependencies[] = options
