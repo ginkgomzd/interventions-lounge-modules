@@ -13,9 +13,18 @@ function intervention_clone_node_alter(&$node, $context) {
 
   $orig = $context['original_node'];
   if ($orig->type == 'intervention') {
+    // re-use original title; i.e., don't prepend "clone of"
     $node->title = $orig->title;
 
+    // increment the reporting year by one
     $year = (int) substr($orig->field_reporting_year[LANGUAGE_NONE][0]['value'], 0, 4);
     $node->field_reporting_year[LANGUAGE_NONE][0]['value'] = ++$year . '-01-01 00:00:00';
+
+    $node->log = "Cloned from {$orig->nid} (revision {$orig->vid}) by {$node->name}";
+
+    // delete moderation data from old node and replace with our own
+    unset($node->workbench_moderation);
+    $node->workbench_moderation_state_new = 'draft';
+    $node->workbench_moderation_state_current = 'draft';
   }
 }
