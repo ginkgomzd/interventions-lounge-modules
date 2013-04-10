@@ -28,3 +28,10 @@ function intervention_clone_node_alter(&$node, $context) {
     $node->workbench_moderation_state_current = 'draft';
   }
 }
+
+/**
+ * Implements hook_views_api().
+ */
+function intervention_views_api() {
+  return array("api" => "3.0");
+}
