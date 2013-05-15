@@ -73,7 +73,7 @@ function _intervention_views_interventions_missing_reports_query_alter(&$view, &
  *
  * So we resort to harcoded SQL.
  */
-function i_nterventions_views_query_alter_allow_taxonomy_lookup_on_unpublished_nodes(&$query) {
+function _interventions_views_query_alter_allow_taxonomy_lookup_on_unpublished_nodes(&$query) {
   $sql = "
     SELECT nodeINNER.nid AS nidINNER
     FROM {node} nodeINNER
