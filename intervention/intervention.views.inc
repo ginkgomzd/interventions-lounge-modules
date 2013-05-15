@@ -19,7 +19,7 @@ function intervention_views_query_alter(&$view, &$query) {
   // to keep this readable, each View gets its own function for customization
   $function = "_intervention_views_{$view->name}_query_alter";
   if (function_exists($function)) {
-    $function(&$view, &$query);
+    $function($view, $query);
   }
 }
 
@@ -73,7 +73,7 @@ function _intervention_views_interventions_missing_reports_query_alter(&$view, &
  *
  * So we resort to harcoded SQL.
  */
-function _interventions_views_query_alter_allow_taxonomy_lookup_on_unpublished_nodes(&$query) {
+function i_nterventions_views_query_alter_allow_taxonomy_lookup_on_unpublished_nodes(&$query) {
   $sql = "
     SELECT nodeINNER.nid AS nidINNER
     FROM {node} nodeINNER
