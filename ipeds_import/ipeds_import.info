@@ -1,0 +1,6 @@
+name = ipeds_import
+description = Drush IPEDS Import/Update utility
+core = 7.x
+package = Interventions Lounge
+php = 5.2.4
+dependencies[] = intervention
