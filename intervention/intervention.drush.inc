@@ -105,52 +105,54 @@ function _drush_intervention_create_taxonomy_term($name, $vid) {
   return $result;
 }
 
+/***
+ * Block users in the Core Team Lead Role
+ * PIO and Webmaster Roles excepted
+ ***/
+function intervention_block_core_team_leads() {
+
+  $role_core_team_lead = user_role_load_by_name('Core Team Lead');
+  $role_pio = user_role_load_by_name('PIO');
+  $role_webmaster = user_role_load_by_name('Webmaster');
+
+  $ctl_users = intervention_get_users_in_role($role_core_team_lead);
+  $pios_users = intervention_get_users_in_role($role_pio);
+  $webmaster_users = intervention_get_users_in_role($role_webmaster);
+
+  # exclude PIO and webmasters from being blocked:
+  $users = array_diff($ctl_users, $pios_users, $webmaster_users);
+
+  user_user_operations_block($users);
+
+}
+
+/***
+ * Get an array of user ID's in a role
+ * 
+ * @param $role Role Object, e.g. user_role_load_by_name($role)
+ * 
+ * @return array an Array of user id's
+ ***/
+function intervention_get_users_in_role($role) {
+
+  $result = db_select('users_roles', 'ur')
+      ->fields('ur')
+      ->condition('ur.rid', $role->rid, '=')
+      ->execute();
+  foreach ($result as $record) {
+        $uids[] = $record->uid;
+  };
+
+  return $uids;
+}
+
 /**
  * 
  *
  ***/
 function drush_intervention_refresh_users() {
 
-  $users = intervention_users_by_role('Core Team Lead');
-  var_dump($users);
-}
+  #block users:
+  intervention_block_core_team_leads();
 
-/**
- * Retrieve Users by role
- *
- * @param $role mixed The name or rid of the role we're wanting users to have
- * @param $active_user boolean Only return active accounts?
- *
- * @return array An array of user objects with the role
- * 
- * credit: http://drupal.stackexchange.com/a/53609
- */
-function intervention_users_by_role($role, $active_user = TRUE) {
-      $uids = array();
-      $users = array();
-      if (is_int($role)) {
-        $my_rid = $role;
-      }
-      else {
-        $role_obj = user_role_load_by_name($role);
-      }
-      $result = db_select('users_roles', 'ur')
-        ->fields('ur')
-        ->condition('ur.rid', $role_obj->rid, '=')
-        ->execute();
-      foreach ($result as $record) {
-        $uids[] = $record->uid;
-      };
-      $query = new EntityFieldQuery();
-      $query->entityCondition('entity_type', 'user')
-        ->propertyCondition('uid', $uids, 'IN');
-      if ($active_user) {
-        $query->propertyCondition('status', 1);
-      }
-      $entities = $query->execute();
-      if (!empty($entities)) {
-        $users = entity_load('user', array_keys($entities['user']));
-      }
-      return $users;
 }
-
