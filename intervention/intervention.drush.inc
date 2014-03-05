@@ -17,6 +17,12 @@ function intervention_drush_command() {
       Intervention which is not already assigned.',
     'aliases' => array('iaf'),
   );
+
+  $items['intervention-refresh-users'] = array(
+    'description' => 'Update users associated with interventions from salesforce export',
+    'aliases' => array('iru'),
+  );
+
   return $items;
 }
 
@@ -98,3 +104,53 @@ function _drush_intervention_create_taxonomy_term($name, $vid) {
 
   return $result;
 }
+
+/**
+ * 
+ *
+ ***/
+function drush_intervention_refresh_users() {
+
+  $users = intervention_users_by_role('Core Team Lead');
+  var_dump($users);
+}
+
+/**
+ * Retrieve Users by role
+ *
+ * @param $role mixed The name or rid of the role we're wanting users to have
+ * @param $active_user boolean Only return active accounts?
+ *
+ * @return array An array of user objects with the role
+ * 
+ * credit: http://drupal.stackexchange.com/a/53609
+ */
+function intervention_users_by_role($role, $active_user = TRUE) {
+      $uids = array();
+      $users = array();
+      if (is_int($role)) {
+        $my_rid = $role;
+      }
+      else {
+        $role_obj = user_role_load_by_name($role);
+      }
+      $result = db_select('users_roles', 'ur')
+        ->fields('ur')
+        ->condition('ur.rid', $role_obj->rid, '=')
+        ->execute();
+      foreach ($result as $record) {
+        $uids[] = $record->uid;
+      };
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'user')
+        ->propertyCondition('uid', $uids, 'IN');
+      if ($active_user) {
+        $query->propertyCondition('status', 1);
+      }
+      $entities = $query->execute();
+      if (!empty($entities)) {
+        $users = entity_load('user', array_keys($entities['user']));
+      }
+      return $users;
+}
+
