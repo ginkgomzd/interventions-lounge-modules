@@ -7,6 +7,16 @@
 include_once 'intervention.features.inc';
 
 /**
+ * Implementation of hook_form_FORM_ID_alter
+ *
+ * Add JavaScript to "node/add/intervention."
+ */
+function intervention_form_intervention_node_form_alter(&$form, &$form_state, $form_id) {
+  $path = drupal_get_path('module', 'intervention') . '/js/validation.js';
+  drupal_add_js($path);
+}
+
+/**
  * Implementation of hook_clone_node_alter().
  */
 function intervention_clone_node_alter(&$node, $context) {
