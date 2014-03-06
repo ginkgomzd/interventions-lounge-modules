@@ -169,14 +169,24 @@ function drush_intervention_refresh_users() {
  ***/
 function drush_intervention_normalize_target_population() {
 
-  $query = new EntityFieldQuery();
+  #get the key stored in the field_data table:
+  $field_info = field_info_instance('node', 'field_target_population', 'intervention');
+  $field_info = field_info_field('field_target_population');
+  $all_students_value = array_search('All Students', $field_info['settings']['allowed_values']);
 
+  $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', 'intervention')
-    ->fieldCondition('field_target_population', 'value', array(2), 'IN')
+    ->fieldCondition('field_target_population', 'value', array($all_students_value), 'IN')
   ;
 
   $result = $query->execute();
   if (!isset($result['node'])) die('No Target-Population-All nodes found');
 
+  $interventions = entity_load('node', array_keys($result['node']));
+  foreach( $interventions as $intv ) {
+    #set target population to only "All Students"
+    $intv->field_target_population['und'] = array(array('value' => '0'));
+    node_save($intv);
+  }
 }
