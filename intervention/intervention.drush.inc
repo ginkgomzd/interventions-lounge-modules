@@ -23,6 +23,11 @@ function intervention_drush_command() {
     'aliases' => array('iru'),
   );
 
+  $items['intervention-normalize-target-population'] = array(
+    'description' => 'Updates interventions to ensure that no other choices are selected when Target-All has been selected.',
+    'aliases' => array('intv-norm-targ', 'int'),
+  );
+
   return $items;
 }
 
@@ -154,5 +159,24 @@ function drush_intervention_refresh_users() {
 
   #block users:
   intervention_block_core_team_leads();
+
+}
+
+/***
+ * Callback for drush command, intervention-normalize-target-population
+ *
+ *
+ ***/
+function drush_intervention_normalize_target_population() {
+
+  $query = new EntityFieldQuery();
+
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', 'intervention')
+    ->fieldCondition('field_target_population', 'value', array(2), 'IN')
+  ;
+
+  $result = $query->execute();
+  if (!isset($result['node'])) die('No Target-Population-All nodes found');
 
 }
