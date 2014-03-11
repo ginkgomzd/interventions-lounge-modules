@@ -28,6 +28,18 @@ function intervention_drush_command() {
     'aliases' => array('intv-norm-targ', 'int'),
   );
 
+  $items['intervention-update-core-team-leads'] = array (
+    'callback' => 'intervention_drush_update_core_team_leads',
+    'description' => 'Updates interventions contact-info from a file',
+    'aliases' => array('ctl-up'),
+    'options' => array(
+      'csv' => 'CSV of Unit-ID Identified IPEDS data',
+      ),
+    'examples' => array(
+      'drush ipeds-up --csv=ipeds_data.csv',
+    ),
+  );
+
   return $items;
 }
 
@@ -189,4 +201,12 @@ function drush_intervention_normalize_target_population() {
     $intv->field_target_population['und'] = array(array('value' => '0'));
     node_save($intv);
   }
+}
+
+/***
+ * Callback for drush command, 
+ * update core team lead contact info
+ ***/
+function intervention_drush_update_core_team_leads() {
+  echo 'intervention-drush_update_core_team_leads';
 }
