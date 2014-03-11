@@ -36,7 +36,7 @@ function intervention_drush_command() {
       'csv' => 'CSV of Unit-ID Identified IPEDS data',
       ),
     'examples' => array(
-      'drush ipeds-up --csv=ipeds_data.csv',
+      'drush ipeds-up --csv=sites/default/files/ipeds_data.csv',
     ),
   );
 
@@ -209,4 +209,38 @@ function drush_intervention_normalize_target_population() {
  ***/
 function intervention_drush_update_core_team_leads() {
   echo 'intervention-drush_update_core_team_leads';
+  $csv_file = drush_get_option('csv');
+
+  if (!is_file($csv_file)) {
+    watchdog('intervention', "\ninvalid csv file\n", null, WATCHDOG_ERROR);
+  }
+  $contacts = _intervention_parse_csv($csv_file);
+
+  var_dump($contacts);
 }
+
+/***
+ * returns an array of associative arrays
+ * first line of file is used for row-keys
+ **/
+function _intervention_parse_csv($filepath, $DELIM = '|', $QUAL = '"' ) {
+    $fd = fopen($filepath, "r");
+
+    while (!feof($fd)) {
+        $line = fgets($fd);
+
+        if (!isset($file_arr)) {
+            $keys_arr = str_getcsv($line, $DELIM, $QUAL);
+            $file_arr = array();
+        } else {
+            if ( count($keys_arr)!= count(str_getcsv($line, $DELIM, $QUAL)) ) {
+                continue;
+            }
+            $file_arr[] = array_combine($keys_arr, str_getcsv($line, $DELIM, $QUAL));
+        }
+    }
+    fclose($fd);
+
+    return $file_arr;
+}
+
