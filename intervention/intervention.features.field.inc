@@ -757,7 +757,7 @@ function intervention_field_default_fields() {
           1 => 'Earn a certificate or associate degree',
           2 => 'Enroll in and successfully complete the initial college-level or gateway courses in subjects such as Math and English',
           3 => 'Persistence from one term to the next',
-          4 => 'Successfully complete remedial or developmental instruction and advance to credit-bearing courses',
+          4 => 'Successfully complete remedial or developmental instruction',
         ),
         'allowed_values_function' => '',
       ),
