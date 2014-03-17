@@ -20,6 +20,9 @@ function intervention_field_default_fields() {
         0 => 'node',
       ),
       'field_name' => 'body',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -56,16 +59,16 @@ function intervention_field_default_fields() {
           'label' => 'hidden',
           'module' => 'text',
           'settings' => array(
-            'trim_length' => 600,
+            'trim_length' => '300',
           ),
           'type' => 'text_summary_or_trimmed',
-          'weight' => 0,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'body',
       'label' => 'Description of Intervention',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'display_summary' => 1,
         'text_processing' => '1',
@@ -80,6 +83,69 @@ function intervention_field_default_fields() {
         ),
         'type' => 'text_textarea_with_summary',
         'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-intervention-field_aggregate_number_studens'.
+  $fields['node-intervention-field_aggregate_number_studens'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_aggregate_number_studens',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_aggregate_number_studens',
+      'label' => 'Number of all students served by this intervention in this reporting year',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'number',
+        'settings' => array(
+          'mask' => '',
+          'placeholder' => '_',
+          'size' => '24',
+        ),
+        'type' => 'number',
+        'weight' => '13',
       ),
     ),
   );
@@ -115,9 +181,12 @@ function intervention_field_default_fields() {
           'article' => 0,
           'atd_newsletter' => 0,
           'brag_bar_item' => 0,
+          'coach_resource' => 0,
           'college_profile' => 'college_profile',
           'college_profile_salesforce' => 0,
+          'event' => 0,
           'faq' => 0,
+          'group' => 0,
           'hidden_page' => 0,
           'intervention' => 0,
           'intervention_contact' => 0,
@@ -155,10 +224,11 @@ function intervention_field_default_fields() {
           'weight' => '4',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'node_reference_plain',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'node',
@@ -177,7 +247,7 @@ function intervention_field_default_fields() {
           'size' => '100',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '16',
+        'weight' => '19',
       ),
     ),
   );
@@ -216,6 +286,7 @@ function intervention_field_default_fields() {
           'college_profile' => 0,
           'college_profile_salesforce' => 0,
           'faq' => 0,
+          'group' => 0,
           'hidden_page' => 0,
           'intervention' => 0,
           'intervention_contact' => 'intervention_contact',
@@ -258,7 +329,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '16',
         ),
       ),
       'entity_type' => 'node',
@@ -277,7 +348,7 @@ function intervention_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '17',
+        'weight' => '20',
       ),
     ),
   );
@@ -290,6 +361,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_content_area',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -307,7 +381,7 @@ function intervention_field_default_fields() {
           4 => 'English',
           5 => 'Humanities',
           6 => 'Math',
-          10 => 'Psychology',
+          10 => 'n/a',
           7 => 'Reading',
           8 => 'Science',
           9 => 'Student Success',
@@ -331,16 +405,17 @@ function intervention_field_default_fields() {
           'weight' => '6',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'inline',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'list_default',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_content_area',
       'label' => 'Content Area',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -350,6 +425,79 @@ function intervention_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-intervention-field_intervention_family'.
+  $fields['node-intervention-field_intervention_family'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_intervention_family',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'interventions',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '20',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_intervention_family',
+      'label' => 'Intervention Family',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '24',
       ),
     ),
   );
@@ -402,7 +550,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '12',
         ),
       ),
       'entity_type' => 'node',
@@ -430,6 +578,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_intervention_type',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -440,7 +591,6 @@ function intervention_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => 'Admissions',
           1 => 'Advising',
           2 => 'Board of Trustees',
           3 => 'Budgeting Process',
@@ -452,12 +602,12 @@ function intervention_field_default_fields() {
           9 => 'Equity',
           10 => 'Faculty Professional Development',
           11 => 'First-Year Experience',
-          12 => 'Gatekeeper Courses',
+          12 => 'Gateway Courses',
           13 => 'Improved Use of Data',
           14 => 'Information Systems',
           15 => 'Institutional Effectiveness',
           16 => 'Institutional Research',
-          17 => 'Internal Policy Review & Update',
+          17 => 'Policy Review & Update',
           18 => 'K-14 Strategies',
           19 => 'Learning Communities',
           20 => 'Mentoring',
@@ -492,16 +642,17 @@ function intervention_field_default_fields() {
           'weight' => '5',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'inline',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'list_default',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_intervention_type',
       'label' => 'Intervention Type',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -556,7 +707,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '13',
         ),
       ),
       'entity_type' => 'node',
@@ -575,7 +726,7 @@ function intervention_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '18',
+        'weight' => '21',
       ),
     ),
   );
@@ -620,13 +771,13 @@ function intervention_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 18,
+          'weight' => '12',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '14',
         ),
       ),
       'entity_type' => 'node',
@@ -641,7 +792,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '18',
       ),
     ),
   );
@@ -689,19 +840,19 @@ function intervention_field_default_fields() {
           'label' => 'inline',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '19',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '15',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_promising_practice',
       'label' => 'Promising Practice',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -710,7 +861,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '12',
+        'weight' => '15',
       ),
     ),
   );
@@ -723,6 +874,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_proportion_served',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -733,9 +887,9 @@ function intervention_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          'Some' => 'Some',
-          'More' => 'More',
-          'Most' => 'Most',
+          'Some' => 'Some (25% or less)',
+          'More' => 'More (25.1% to 60%)',
+          'Most' => 'Most (more than 60%)',
           'NA' => 'Not Available',
         ),
         'allowed_values_function' => '',
@@ -766,7 +920,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '11',
         ),
       ),
       'entity_type' => 'node',
@@ -781,7 +935,7 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '14',
+        'weight' => '17',
       ),
     ),
   );
@@ -794,6 +948,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_reporting_year',
+      'field_permissions' => array(
+        'type' => '2',
+      ),
       'foreign keys' => array(),
       'indexes' => array(),
       'locked' => '0',
@@ -838,13 +995,13 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '10',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_reporting_year',
       'label' => 'Reporting Year',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'default_value' => 'now',
         'default_value2' => 'same',
@@ -877,6 +1034,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_start_year',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -906,23 +1066,23 @@ function intervention_field_default_fields() {
 ',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 17,
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_start_year',
-      'label' => 'Start School Year',
-      'required' => 0,
+      'label' => 'Start Academic Year',
+      'required' => 1,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -987,7 +1147,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'node',
@@ -1055,7 +1215,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'node',
@@ -1075,6 +1235,69 @@ function intervention_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-intervention-field_target_pop_num_served'.
+  $fields['node-intervention-field_target_pop_num_served'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_target_pop_num_served',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '16',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_target_pop_num_served',
+      'label' => 'Number of students in the target population served by intervention in this reporting year',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'number',
+        'settings' => array(
+          'mask' => '',
+          'placeholder' => '_',
+          'size' => '24',
+        ),
+        'type' => 'number',
+        'weight' => '11',
+      ),
+    ),
+  );
+
   // Exported field: 'node-intervention-field_target_population'.
   $fields['node-intervention-field_target_population'] = array(
     'field_config' => array(
@@ -1083,6 +1306,9 @@ function intervention_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_target_population',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
       'foreign keys' => array(),
       'indexes' => array(
         'value' => array(
@@ -1099,10 +1325,10 @@ function intervention_field_default_fields() {
           3 => 'Enrollment: Full Time Students',
           4 => 'Enrollment: Part Time Students',
           5 => 'Faculty and Staff',
-          6 => 'Financial Aid Status',
           7 => 'First Generation',
           8 => 'First-time Students',
           9 => 'High School Students',
+          6 => 'Low-Income Students',
           10 => 'Other',
         ),
         'allowed_values_function' => '',
@@ -1124,16 +1350,17 @@ function intervention_field_default_fields() {
           'weight' => '7',
         ),
         'teaser' => array(
-          'label' => 'above',
+          'label' => 'inline',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'type' => 'list_default',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_population',
       'label' => 'Target Population',
-      'required' => 0,
+      'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
@@ -1167,8 +1394,10 @@ function intervention_field_default_fields() {
         'allowed_values' => array(
           0 => 'All Races',
           1 => 'American Indian or Alaska Native',
+          5 => 'Asian',
           2 => 'Black or African American',
-          3 => 'Black or African American non-Hispanic',
+          6 => 'Native Hawaiian or Other Pacific Islander',
+          7 => 'White',
           4 => 'Other',
         ),
         'allowed_values_function' => '',
@@ -1197,7 +1426,7 @@ function intervention_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'node',
@@ -1212,7 +1441,70 @@ function intervention_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '11',
+        'weight' => '10',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-intervention-field_total_num_students'.
+  $fields['node-intervention-field_total_num_students'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_total_num_students',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'intervention',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '17',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_total_num_students',
+      'label' => 'Number of students in the target population total in this reporting year',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'number',
+        'settings' => array(
+          'mask' => '',
+          'placeholder' => '_',
+          'size' => '24',
+        ),
+        'type' => 'number',
+        'weight' => '12',
       ),
     ),
   );
@@ -1258,13 +1550,13 @@ function intervention_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'node',
@@ -1284,7 +1576,7 @@ function intervention_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '13',
+        'weight' => '16',
       ),
     ),
   );
@@ -1299,17 +1591,21 @@ function intervention_field_default_fields() {
   t('Description of Intervention');
   t('Ethnicity');
   t('Import ID');
+  t('Intervention Family');
   t('Intervention Status');
   t('Intervention Type');
   t('Legacy ID');
   t('Name of Institution');
+  t('Number of all students served by this intervention in this reporting year');
+  t('Number of students in the target population served by intervention in this reporting year');
+  t('Number of students in the target population total in this reporting year');
   t('Outcome Indicators This Intervention Targets');
   t('Person to contact regarding this intervention.');
   t('Promising Practice');
   t('Proportion of Target Population Served by This Intervention');
   t('Race');
   t('Reporting Year');
-  t('Start School Year');
+  t('Start Academic Year');
   t('Target Gender');
   t('Target Population');
   t('Why This Intervention Demonstrates Promise');
