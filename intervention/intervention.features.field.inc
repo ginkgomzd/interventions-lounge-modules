@@ -46,7 +46,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => t('Please provide a description of the intervention that is one to two paragraphs long. Include relevant details about the target areas of improvement you are hoping to address through this intervention as well as key intervention elements and activities.'),
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -384,6 +384,7 @@ function intervention_field_default_fields() {
           10 => 'n/a',
           7 => 'Reading',
           8 => 'Science',
+          11 => 'Social Sciences',
           9 => 'Student Success',
         ),
         'allowed_values_function' => '',
@@ -395,7 +396,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'ctrl-click to select multiple',
+      'description' => t('If the intervention is to be implemented within a specific discipline, choose all that apply from the following list [ctrl+click to select multiple].'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -537,7 +538,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => t('Indicate whether the intervention is already in place at your institution (active), if implementation has yet to begin (planned), or if the intervention was in place but is no longer in place (discontinued).'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -597,29 +598,33 @@ function intervention_field_default_fields() {
           4 => 'Committee or Governance Structure',
           5 => 'Community Engagement',
           6 => 'Course Redesign',
+          32 => 'Curriculum Redesign',
           7 => 'Developmental Education',
-          8 => 'Dual Credit Office',
+          8 => 'Dual Enrolled',
+          33 => 'Early Alert',
           9 => 'Equity',
-          10 => 'Faculty Professional Development',
+          24 => 'Faculty and Staff Engagement',
           11 => 'First-Year Experience',
           12 => 'Gateway Courses',
           13 => 'Improved Use of Data',
           14 => 'Information Systems',
           15 => 'Institutional Effectiveness',
           16 => 'Institutional Research',
-          17 => 'Policy Review & Update',
+          17 => 'Internal Policy Review & Revision',
           18 => 'K-14 Strategies',
           19 => 'Learning Communities',
           20 => 'Mentoring',
           21 => 'Orientation',
+          29 => 'Placement Process', // was "Testing"
           22 => 'Policy Change',
-          23 => 'Program Evaluation Process',
-          24 => 'Staff Engagement',
+          10 => 'Professional Development',
+          23 => 'Program Evaluation',
           25 => 'Student Engagement',
           26 => 'Student Success Course',
           27 => 'Student Support Services',
+          34 => 'Summer Bridge',
           28 => 'Supplemental Instruction',
-          29 => 'Testing',
+          35 => 'Technology',
           30 => 'Tutoring',
           31 => 'Other',
         ),
@@ -632,7 +637,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'ctrl-click to select multiple',
+      'description' => t('Choose all that apply from the following lists [ctrl+click to select multiple].'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -753,7 +758,7 @@ function intervention_field_default_fields() {
           1 => 'Earn a certificate or associate degree',
           2 => 'Enroll in and successfully complete the initial college-level or gateway courses in subjects such as Math and English',
           3 => 'Persistence from one term to the next',
-          4 => 'Successfully complete remedial or developmental instruction and advance to credit-bearing courses',
+          4 => 'Successfully complete remedial or developmental instruction',
         ),
         'allowed_values_function' => '',
       ),
@@ -764,7 +769,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'ctrl-click to select multiple',
+      'description' => t('Indicate which of the five Achieving the Dream outcome indicators the intervention addresses [ctrl+click to select multiple].'),
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -782,7 +787,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_outcome_indicators',
-      'label' => 'Outcome Indicators This Intervention Targets',
+      'label' => t('Target ATD Student Success Indicator'),
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -905,9 +910,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '<p><strong>Some:</strong> Intervention(s) will be considered to be serving “Some” students when serving 25% or less of the target student population.</p>
-<p><strong>More:</strong> Intervention(s) will be considered to be serving “More” students when serving 25.1% to 60% of the target student population.</p>
-<p><strong>Most:</strong> Intervention(s) will be considered to be serving “Most” students when serving more than 60% of the target student population.</p>',
+      'description' => t('<p>The proportion of the key target population that was served by this intervention in this reporting year. Use the following designations to classify the proportion:</p><ul><li>Some: serving 25% or less of the target student population.</li><li>More: serving 25.1% to 60% of the target student population.</li><li>Most: serving more than 60% of the target student population.</li></ul>'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -925,7 +928,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_proportion_served',
-      'label' => 'Proportion of Target Population Served by This Intervention',
+      'label' => t('Proportion of Key Target Population Served'),
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1062,8 +1065,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'YYYY-YYYY
-',
+      'description' => t('The academic year in which the intervention began or is planned to begin. Format: YYYY-YYYY.'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1134,7 +1136,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => t('Indicate an ethnicity focus in the target population, if applicable.'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1152,7 +1154,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_ethnicity',
-      'label' => 'Ethnicity',
+      'label' => t('Target Ethnicity'),
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1202,7 +1204,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => '',
+      'description' => t('Indicate a gender focus in the target population, if applicable.'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1321,14 +1323,18 @@ function intervention_field_default_fields() {
         'allowed_values' => array(
           0 => 'All Students',
           1 => 'Academically Underprepared Students',
+          12 => 'Career and Technical Ed Students',
           2 => 'ESL-ESOL-ELL',
           3 => 'Enrollment: Full Time Students',
           4 => 'Enrollment: Part Time Students',
           5 => 'Faculty and Staff',
-          7 => 'First Generation',
+          13 => 'Financial Aid Recipients',
+          7 => 'First Generation Students',
           8 => 'First-time Students',
           9 => 'High School Students',
-          6 => 'Low-Income Students',
+          6 => 'Pell-eligible/Low-income Students',
+          14 => 'Transfer Track Students',
+          11 => 'Veterans/Active Military',
           10 => 'Other',
         ),
         'allowed_values_function' => '',
@@ -1340,7 +1346,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'ctrl-click to select multiple',
+      'description' => t('From the following list, choose all that apply [ctrl+click to select multiple]. Example: male students of color, part-time students, faculty, etc.'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1359,7 +1365,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_population',
-      'label' => 'Target Population',
+      'label' => t('Identify the key target population served by this intervention'),
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1413,7 +1419,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'ctrl-click to select multiple',
+      'description' => t('Indicate a race focus in the target population, if applicable.'),
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1431,7 +1437,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_race',
-      'label' => 'Race',
+      'label' => t('Target Race'),
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1583,13 +1589,9 @@ function intervention_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('<p><strong>Some:</strong> Intervention(s) will be considered to be serving “Some” students when serving 25% or less of the target student population.</p>
-<p><strong>More:</strong> Intervention(s) will be considered to be serving “More” students when serving 25.1% to 60% of the target student population.</p>
-<p><strong>Most:</strong> Intervention(s) will be considered to be serving “Most” students when serving more than 60% of the target student population.</p>');
   t('Contact');
   t('Content Area');
   t('Description of Intervention');
-  t('Ethnicity');
   t('Import ID');
   t('Intervention Family');
   t('Intervention Status');
@@ -1599,19 +1601,11 @@ function intervention_field_default_fields() {
   t('Number of all students served by this intervention in this reporting year');
   t('Number of students in the target population served by intervention in this reporting year');
   t('Number of students in the target population total in this reporting year');
-  t('Outcome Indicators This Intervention Targets');
   t('Person to contact regarding this intervention.');
   t('Promising Practice');
-  t('Proportion of Target Population Served by This Intervention');
-  t('Race');
   t('Reporting Year');
-  t('Start Academic Year');
   t('Target Gender');
-  t('Target Population');
   t('Why This Intervention Demonstrates Promise');
-  t('YYYY-YYYY
-');
-  t('ctrl-click to select multiple');
 
   return $fields;
 }

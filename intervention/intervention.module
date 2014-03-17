@@ -9,11 +9,13 @@ include_once 'intervention.features.inc';
 /**
  * Implementation of hook_form_FORM_ID_alter
  *
- * Add JavaScript to "node/add/intervention."
+ * Add JavaScript to "node/add/intervention." Add help text to node title.
  */
 function intervention_form_intervention_node_form_alter(&$form, &$form_state, $form_id) {
   $path = drupal_get_path('module', 'intervention') . '/js/validation.js';
   drupal_add_js($path);
+
+  $form['title']['#description'] = t('A short title for the intervention');
 }
 
 /**
