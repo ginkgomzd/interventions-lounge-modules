@@ -384,6 +384,7 @@ function intervention_field_default_fields() {
           10 => 'n/a',
           7 => 'Reading',
           8 => 'Science',
+          11 => 'Social Sciences',
           9 => 'Student Success',
         ),
         'allowed_values_function' => '',
