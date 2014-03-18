@@ -212,7 +212,7 @@ function intervention_drush_update_core_team_leads() {
   $csv_file = drush_get_option('csv');
 
   if (!is_file($csv_file)) {
-    watchdog('intervention', "\ninvalid csv file\n", null, WATCHDOG_ERROR);
+    watchdog('intervention', "invalid csv file", null, WATCHDOG_ERROR);
   }
   $contacts = _intervention_parse_csv($csv_file);
 //  var_dump($contacts);
@@ -225,10 +225,18 @@ function intervention_drush_update_core_team_leads() {
     $email = $contact['Email'];
 
     $interventions = _intervention_get_interventions($unitid);
-//var_dump($interventions); die;
+    if (!is_array($interventions) ) {
+      watchdog('drush_interventions', 'drush_update_core_team_leads failed to retrieve interventions for unitid: %unitid', array('%unitid'=>$unitid));
+      continue;
+    } else {
+      watchdog('drush_interventions', 'updating interventions for unitid: %unitid', array('%unitid'=>$unitid));
+    }
+
     foreach ($interventions as $intervention) {
-      _intervention_update_intervention_contact($intervention, array('name'=>$name, 'title'=>$title, 'email'=>$email));
+      $field_contact_nid = $intervention->field_contact[LANGUAGE_NONE][0]['nid'];
+      _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$email));
       _intervention_update_drupal_user($intervention->uid, $name, $mail);
+      break; // We only really need the user from one intervention;
     }
   }
 }
@@ -238,7 +246,10 @@ function intervention_drush_update_core_team_leads() {
  *
  ***/
 function _intervention_update_drupal_user($uid, $name, $mail) {
-  if ($account = user_load($uid)) watchdog('drush_interventions', 'failed to load uid %s', array($uid));
+  if (! $account = user_load($uid)) {
+    watchdog('drush_interventions', 'update_drupal_user failed to load uid %uid', array('%uid'=>$uid));
+    return null;
+  }
 
   return user_save($account, array(
     'name' => $name,
@@ -246,11 +257,12 @@ function _intervention_update_drupal_user($uid, $name, $mail) {
     )
   );    
 }
+
 /***
  * Utility to update an Intervention Contact
  ***/
-function _intervention_update_intervention_contact($intervention, $data = array('name' => null, 'title' => null, 'email' => null) ) {
-  $contact = node_load($intervention->field_contact[LANGUAGE_NONE][0]['nid']);
+function _intervention_update_intervention_contact($field_contact_nid, $data = array('name' => null, 'title' => null, 'email' => null) ) {
+  $contact = node_load($field_contact_nid);
 
   $contact->name = $data['name'];
   $contact->title = $contact->name;
@@ -289,6 +301,7 @@ function _intervention_parse_csv($filepath, $DELIM = '|', $QUAL = '"' ) {
  * Get interventions for a Given IPEDS UNITID
  ***/
 function _intervention_get_interventions($UNITID) {
+  if (empty($UNITID)) return null;
   $query = new EntityFieldQuery();
 
   $college = $query
@@ -297,7 +310,8 @@ function _intervention_get_interventions($UNITID) {
     ->fieldCondition('field_ipeds_unitid', 'value', $UNITID, '=')
     ->execute();
 
-  if (count($college) > 1) watchdog('drush_interventions', 'warning, get_interventions found multiple colleges for ipeds_unitid, %s', array($UNITID), WATHDOG_WARNING);
+  if (empty($college['node'])) { watchdog('drush_interventions', 'warning, get_interventions failed to load college_profile for %unitid', array('%unitid'=>$UNITID)); return null; }
+  if (count($college) > 1) watchdog('drush_interventions', 'warning, get_interventions found multiple colleges for ipeds_unitid, %unitid', array('%unitid'=>$UNITID), WATHDOG_WARNING);
 
   $query = new EntityFieldQuery();
   $college_nid = array_keys($college['node'])[0];
