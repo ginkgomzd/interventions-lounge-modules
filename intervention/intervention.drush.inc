@@ -125,7 +125,7 @@ function _drush_intervention_create_taxonomy_term($name, $vid) {
 /***
  * Block users in the Core Team Lead Role
  * PIO and Webmaster Roles excepted
- ***/
+ ***/ 
 function intervention_block_core_team_leads() {
 
   $role_core_team_lead = user_role_load_by_name('Core Team Lead');
@@ -215,8 +215,49 @@ function intervention_drush_update_core_team_leads() {
     watchdog('intervention', "\ninvalid csv file\n", null, WATCHDOG_ERROR);
   }
   $contacts = _intervention_parse_csv($csv_file);
+//  var_dump($contacts);
 
-  var_dump($contacts);
+  foreach ($contacts as $contact) {
+
+    $unitid = $contact['UNITID'];
+    $name = $contact['Contact Full Name'];
+    $title = $contact['Title'];
+    $email = $contact['Email'];
+
+    $interventions = _intervention_get_interventions($unitid);
+//var_dump($interventions); die;
+    foreach ($interventions as $intervention) {
+      _intervention_update_intervention_contact($intervention, array('name'=>$name, 'title'=>$title, 'email'=>$email));
+      _intervention_update_drupal_user($intervention->uid, $name, $mail);
+    }
+  }
+}
+
+/***
+ * Utility to update a Drupal User
+ *
+ ***/
+function _intervention_update_drupal_user($uid, $name, $mail) {
+  if ($account = user_load($uid)) watchdog('drush_interventions', 'failed to load uid %s', array($uid));
+
+  return user_save($account, array(
+    'name' => $name,
+    'mail' => $mail,
+    )
+  );    
+}
+/***
+ * Utility to update an Intervention Contact
+ ***/
+function _intervention_update_intervention_contact($intervention, $data = array('name' => null, 'title' => null, 'email' => null) ) {
+  $contact = node_load($intervention->field_contact[LANGUAGE_NONE][0]['nid']);
+
+  $contact->name = $data['name'];
+  $contact->title = $contact->name;
+  $contact->field_email[LANGUAGE_NONE][0]['email'] = $data['email'];
+  $contact->field_job_title[LANGUAGE_NONE][0]['value'] = $data['title'];
+
+  return node_save($contact);
 }
 
 /***
@@ -242,5 +283,33 @@ function _intervention_parse_csv($filepath, $DELIM = '|', $QUAL = '"' ) {
     fclose($fd);
 
     return $file_arr;
+}
+
+/***
+ * Get interventions for a Given IPEDS UNITID
+ ***/
+function _intervention_get_interventions($UNITID) {
+  $query = new EntityFieldQuery();
+
+  $college = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'college_profile')
+    ->fieldCondition('field_ipeds_unitid', 'value', $UNITID, '=')
+    ->execute();
+
+  if (count($college) > 1) watchdog('drush_interventions', 'warning, get_interventions found multiple colleges for ipeds_unitid, %s', array($UNITID), WATHDOG_WARNING);
+
+  $query = new EntityFieldQuery();
+  $college_nid = array_keys($college['node'])[0];
+
+  $interventions = $query
+    ->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'intervention')
+    ->fieldCondition('field_college_reference', 'nid', $college_nid, '=')
+    ->execute(); 
+
+  if (count($interventions) < 1) return;
+
+  return entity_load('node', array_keys($interventions['node']));
 }
 
