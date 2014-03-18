@@ -32,7 +32,7 @@ function drush_ipeds_import_update_ipeds() {
 
     if (!is_file($csv_file)) {
         //TODO: handle null
-        die("\nsinvalid csv file\n");
+        die("\ninvalid csv file\n");
     }
 
     $ipeds = _ipeds_import_parse_csv($csv_file);
