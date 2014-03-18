@@ -87,69 +87,6 @@ function intervention_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-intervention-field_aggregate_number_studens'.
-  $fields['node-intervention-field_aggregate_number_studens'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_aggregate_number_studens',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'intervention',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '18',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_aggregate_number_studens',
-      'label' => 'Number of all students served by this intervention in this reporting year',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'number',
-        'settings' => array(
-          'mask' => '',
-          'placeholder' => '_',
-          'size' => '24',
-        ),
-        'type' => 'number',
-        'weight' => '13',
-      ),
-    ),
-  );
-
   // Exported field: 'node-intervention-field_college_reference'.
   $fields['node-intervention-field_college_reference'] = array(
     'field_config' => array(
@@ -1237,69 +1174,6 @@ function intervention_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-intervention-field_target_pop_num_served'.
-  $fields['node-intervention-field_target_pop_num_served'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_target_pop_num_served',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'intervention',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '16',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_target_pop_num_served',
-      'label' => 'Number of students in the target population served by intervention in this reporting year',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'number',
-        'settings' => array(
-          'mask' => '',
-          'placeholder' => '_',
-          'size' => '24',
-        ),
-        'type' => 'number',
-        'weight' => '11',
-      ),
-    ),
-  );
-
   // Exported field: 'node-intervention-field_target_population'.
   $fields['node-intervention-field_target_population'] = array(
     'field_config' => array(
@@ -1453,69 +1327,6 @@ function intervention_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-intervention-field_total_num_students'.
-  $fields['node-intervention-field_total_num_students'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_total_num_students',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'intervention',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'inline',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '17',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_total_num_students',
-      'label' => 'Number of students in the target population total in this reporting year',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'number',
-        'settings' => array(
-          'mask' => '',
-          'placeholder' => '_',
-          'size' => '24',
-        ),
-        'type' => 'number',
-        'weight' => '12',
-      ),
-    ),
-  );
-
   // Exported field: 'node-intervention-field_why_promising'.
   $fields['node-intervention-field_why_promising'] = array(
     'field_config' => array(
@@ -1599,9 +1410,6 @@ function intervention_field_default_fields() {
   t('Intervention Type');
   t('Legacy ID');
   t('Name of Institution');
-  t('Number of all students served by this intervention in this reporting year');
-  t('Number of students in the target population served by intervention in this reporting year');
-  t('Number of students in the target population total in this reporting year');
   t('Person to contact regarding this intervention.');
   t('Promising Practice');
   t('Reporting Year');

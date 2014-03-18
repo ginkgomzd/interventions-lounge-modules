@@ -76,4 +76,21 @@ function intervention_install () {
   variable_set('workbench_moderation_default_state_intervention', "draft");
 
 }
-?>
+
+/**
+ * Delete obsoleted fields and data.
+ */
+function intervention_update_7101(&$sandbox) {
+  $delete = array(
+    'field_aggregate_number_studens',
+    'field_target_pop_num_served',
+    'field_total_num_students',
+  );
+
+  foreach ($delete as $field) {
+    if (field_info_field($field)) {
+      field_delete_field($field);
+      field_purge_batch(100);
+    }
+  }
+}
