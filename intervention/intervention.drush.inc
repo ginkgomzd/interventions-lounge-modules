@@ -254,7 +254,7 @@ function _intervention_update_drupal_user($name, $mail) {
     'name' => $name,
     'mail' => $mail,
     );
-  $duplicate = array(
+  $duplicate = array(	// illiminate collisions
     'name' => "DUPLICATE:$name",
     'mail' => "DUPLICATE:$mail",
     );
@@ -262,18 +262,18 @@ function _intervention_update_drupal_user($name, $mail) {
   $user_by_mail = user_load_by_mail($mail);
   $user_by_name = user_load_by_name($name);
 
-  if ($user_by_mail->uid === $user_by_name->uid) {
+  if ($user_by_mail->uid === $user_by_name->uid) { //did we get the same user?
     $account = user_save($user_by_mail, $update);
   } else {
       $active = $disable = $user_by_name;
 
-      if ($user_by_mail === false xor $user_by_name === false) {
-        if ($user_by_name === false)
+      if ($user_by_mail === false xor $user_by_name === false) { 
+        if ($user_by_name === false) // which user query was successful?
           $active = $user_by_mail;
         else
-          $disable = $user_by_mail;
+          $disable = $user_by_mail; // not really used
       } else {
-        if ($user_by_mail->login > $user_by_name->login)
+        if ($user_by_mail->login > $user_by_name->login) // select last used to keep
           $active = $user_by_mail;
         else 
           $disable = $user_by_mail;
