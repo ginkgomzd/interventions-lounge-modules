@@ -241,7 +241,9 @@ function intervention_drush_update_core_team_leads() {
         $field_contact_nid = $intervention->field_contact[LANGUAGE_NONE][0]['nid'];
         _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$email));
       }
-      //TODO: ensure intervention uid
+      //ensure intervention uid
+      $intervention->uid = $account->uid;
+      node_save($intervention);
     }
   }
 }
