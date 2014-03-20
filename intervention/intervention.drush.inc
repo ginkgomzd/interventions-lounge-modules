@@ -222,9 +222,11 @@ function intervention_drush_update_core_team_leads() {
     $unitid = $contact['UNITID'];
     $name = $contact['Contact Full Name'];
     $title = $contact['Title'];
-    $email = $contact['Email'];
+    $mail = $contact['Email'];
 
-    $account = _intervention_update_drupal_user($name, $mail);
+    if ($mail == '') continue;
+
+    $account = user_save(user_load_by_mail($mail), array('name'=>$mail, 'mail'=>$mail));
     user_user_operations_unblock(array($account->uid));
 
     $interventions = _intervention_get_interventions($unitid);
@@ -239,53 +241,13 @@ function intervention_drush_update_core_team_leads() {
     foreach ($interventions as $intervention) {
       if ($field_contact_nid != $intervention->field_contact[LANGUAGE_NONE][0]['nid']) {
         $field_contact_nid = $intervention->field_contact[LANGUAGE_NONE][0]['nid'];
-        _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$email));
+        _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$mail));
       }
       //ensure intervention uid
       $intervention->uid = $account->uid;
       node_save($intervention);
     }
   }
-}
-
-/***
- * Utility to update a Drupal User
- ***/
-function _intervention_update_drupal_user($name, $mail) {
-  $update =  array(
-    'name' => $name,
-    'mail' => $mail,
-    );
-  $duplicate = array(	// illiminate collisions
-    'name' => "DUPLICATE:$name",
-    'mail' => "DUPLICATE:$mail",
-    );
-
-  $user_by_mail = user_load_by_mail($mail);
-  $user_by_name = user_load_by_name($name);
-
-  if ($user_by_mail->uid === $user_by_name->uid) { //did we get the same user?
-    $account = user_save($user_by_mail, $update);
-  } else {
-      $active = $disable = $user_by_name;
-
-      if ($user_by_mail === false xor $user_by_name === false) { 
-        if ($user_by_name === false) // which user query was successful?
-          $active = $user_by_mail;
-        else
-          $disable = $user_by_mail; // not really used
-      } else {
-        if ($user_by_mail->login > $user_by_name->login) // select last used to keep
-          $active = $user_by_mail;
-        else 
-          $disable = $user_by_mail;
-      }
-
-    user_save($disable, $duplicate); // expect is already blocked
-    $account = user_save($active, $update); 
-  }
-
-  return $account;
 }
 
 /***
