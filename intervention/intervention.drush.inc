@@ -296,7 +296,7 @@ function _intervention_get_interventions($UNITID) {
   if (empty($UNITID)) return null;
   $query = new EntityFieldQuery();
 
-  $college = $query
+  $result = $query
     ->entityCondition('entity_type', 'node')
     ->entityCondition('bundle', 'college_profile')
     ->fieldCondition('field_ipeds_unitid', 'value', $UNITID, '=')
@@ -306,7 +306,8 @@ function _intervention_get_interventions($UNITID) {
   if (count($college) > 1) watchdog('drush_interventions', 'warning, get_interventions found multiple colleges for ipeds_unitid, %unitid', array('%unitid'=>$UNITID), WATHDOG_WARNING);
 
   $query = new EntityFieldQuery();
-  $college_nid = array_keys($college['node'])[0];
+  $college = array_keys($result['node']);
+  $college_nid = $college[0];
 
   $interventions = $query
     ->entityCondition('entity_type', 'node')
