@@ -18,11 +18,6 @@ function intervention_drush_command() {
     'aliases' => array('iaf'),
   );
 
-  $items['intervention-refresh-users'] = array(
-    'description' => 'Update users associated with interventions from salesforce export',
-    'aliases' => array('iru'),
-  );
-
   $items['intervention-normalize-target-population'] = array(
     'description' => 'Updates interventions to ensure that no other choices are selected when Target-All has been selected.',
     'aliases' => array('intv-norm-targ', 'int'),
@@ -163,17 +158,6 @@ function intervention_get_users_in_role($role) {
   return $uids;
 }
 
-/**
- * 
- *
- ***/
-function drush_intervention_refresh_users() {
-
-  #block users:
-  intervention_block_core_team_leads();
-
-}
-
 /***
  * Callback for drush command, intervention-normalize-target-population
  *
@@ -216,6 +200,9 @@ function intervention_drush_update_core_team_leads() {
   }
   $contacts = _intervention_parse_csv($csv_file);
 //  var_dump($contacts);
+
+  #block users:
+  intervention_block_core_team_leads();
 
   foreach ($contacts as $contact) {
 
