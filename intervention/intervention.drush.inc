@@ -210,6 +210,7 @@ function intervention_drush_update_core_team_leads() {
     $name = $contact['Contact Full Name'];
     $title = $contact['Title'];
     $mail = $contact['Email'];
+    $phone = $contact['Phone'];
 
     if ($mail == '') continue;
 
@@ -228,7 +229,7 @@ function intervention_drush_update_core_team_leads() {
     foreach ($interventions as $intervention) {
       if ($field_contact_nid != $intervention->field_contact[LANGUAGE_NONE][0]['nid']) {
         $field_contact_nid = $intervention->field_contact[LANGUAGE_NONE][0]['nid'];
-        _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$mail));
+        _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$mail, 'phone'=>$phone));
       }
       //ensure intervention uid
       $intervention->uid = $account->uid;
@@ -240,13 +241,14 @@ function intervention_drush_update_core_team_leads() {
 /***
  * Utility to update an Intervention Contact
  ***/
-function _intervention_update_intervention_contact($field_contact_nid, $data = array('name' => null, 'title' => null, 'email' => null) ) {
+function _intervention_update_intervention_contact($field_contact_nid, $data = array('name' => null, 'title' => null, 'email' => null, 'phone' => null) ) {
   $contact = node_load($field_contact_nid);
 
   $contact->name = $data['name'];
   $contact->title = $contact->name;
   $contact->field_email[LANGUAGE_NONE][0]['email'] = $data['email'];
   $contact->field_job_title[LANGUAGE_NONE][0]['value'] = $data['title'];
+  $contact->field_contact_phone[LANGUAGE_NONE][0]['value'] = $data['phone'];
 
   return node_save($contact);
 }
