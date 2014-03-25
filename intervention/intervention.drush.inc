@@ -204,6 +204,8 @@ function intervention_drush_update_core_team_leads() {
   #block users:
   intervention_block_core_team_leads();
 
+  $role_core_team_lead = user_role_load_by_name('Core Team Lead');
+
   foreach ($contacts as $contact) {
 
     $unitid = $contact['UNITID'];
@@ -214,7 +216,9 @@ function intervention_drush_update_core_team_leads() {
 
     if ($mail == '') continue;
 
-    $account = user_save(user_load_by_mail($mail), array('name'=>$mail, 'mail'=>$mail));
+    $account = user_load_by_mail($mail);
+    $account->roles[$role_core_team_lead->rid] = $role_core_team_lead->name;
+    $account = user_save($account, array('name'=>$mail, 'mail'=>$mail));
     user_user_operations_unblock(array($account->uid));
 
     $interventions = _intervention_get_interventions($unitid);
