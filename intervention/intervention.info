@@ -20,6 +20,7 @@ features[field][] = node-intervention-body
 features[field][] = node-intervention-field_college_reference
 features[field][] = node-intervention-field_contact
 features[field][] = node-intervention-field_content_area
+features[field][] = node-intervention-field_identify_the_key_target_po
 features[field][] = node-intervention-field_intervention_family
 features[field][] = node-intervention-field_intervention_status
 features[field][] = node-intervention-field_intervention_type
