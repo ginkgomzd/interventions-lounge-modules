@@ -1312,7 +1312,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_population',
-      'label' => 'Target Population',
+      'label' => 'Target Populations',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1479,7 +1479,7 @@ function intervention_field_default_fields() {
   t('Content Area');
   t('Description of Intervention');
   t('Example: male students of color, part-time students, faculty, etc.');
-  t('Target Population');
+  t('Target Populations');
   t('Identify the key target population served by this intervention');
   t('If the intervention is to be implemented within a specific discipline, choose all that apply from the following list [ctrl+click to select multiple].');
   t('Import ID');
