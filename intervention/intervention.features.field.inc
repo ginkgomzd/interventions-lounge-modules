@@ -646,7 +646,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Choose all that apply from the following lists [ctrl+click to select multiple].',
+      'description' => 'Choose all that apply from the following list [ctrl+click to select multiple].',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1293,7 +1293,7 @@ function intervention_field_default_fields() {
       'bundle' => 'intervention',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'From the following list, choose all that apply [ctrl+click to select multiple]. Example: male students of color, part-time students, faculty, etc.',
+      'description' => 'Choose all that apply from the following list [ctrl+click to select multiple].',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1312,7 +1312,7 @@ function intervention_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_target_population',
-      'label' => 'Identify the key target population served by this intervention',
+      'label' => 'Target Population',
       'required' => 1,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1474,12 +1474,12 @@ function intervention_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('<p>The proportion of the key target population that was served by this intervention in this reporting year. Use the following designations to classify the proportion:</p><ul><li>Some: serving 25% or less of the target student population.</li><li>More: serving 25.1% to 60% of the target student population.</li><li>Most: serving more than 60% of the target student population.</li></ul>');
-  t('Choose all that apply from the following lists [ctrl+click to select multiple].');
+  t('Choose all that apply from the following list [ctrl+click to select multiple].');
   t('Contact');
   t('Content Area');
   t('Description of Intervention');
   t('Example: male students of color, part-time students, faculty, etc.');
-  t('From the following list, choose all that apply [ctrl+click to select multiple]. Example: male students of color, part-time students, faculty, etc.');
+  t('Target Population');
   t('Identify the key target population served by this intervention');
   t('If the intervention is to be implemented within a specific discipline, choose all that apply from the following list [ctrl+click to select multiple].');
   t('Import ID');
