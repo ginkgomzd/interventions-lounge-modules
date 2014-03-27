@@ -1129,8 +1129,8 @@ function intervention_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'All' => 'All',
-          'Latino' => 'Hispanic or Latino',
-          'NonLatino' => 'Not Hispanic or Latino',
+          'Latino' => 'Hispanic or Latin@',
+          'NonLatino' => 'Not Hispanic or Latin@',
         ),
         'allowed_values_function' => '',
       ),
@@ -1145,7 +1145,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Indicate an ethnicity focus in the target population, if applicable.',
+      'description' => 'Indicate an ethnicity focus in the target populations, if applicable.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1213,7 +1213,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Indicate a gender focus in the target population, if applicable.',
+      'description' => 'Indicate a gender focus in the target populations, if applicable.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1366,7 +1366,7 @@ function intervention_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Indicate a race focus in the target population, if applicable.',
+      'description' => 'Indicate a race focus in the target populations, if applicable.',
       'display' => array(
         'default' => array(
           'label' => 'inline',
@@ -1483,9 +1483,9 @@ function intervention_field_default_fields() {
   t('Identify the key target population served by this intervention');
   t('If the intervention is to be implemented within a specific discipline, choose all that apply from the following list [ctrl+click to select multiple].');
   t('Import ID');
-  t('Indicate a gender focus in the target population, if applicable.');
-  t('Indicate a race focus in the target population, if applicable.');
-  t('Indicate an ethnicity focus in the target population, if applicable.');
+  t('Indicate a gender focus in the target populations, if applicable.');
+  t('Indicate a race focus in the target populations, if applicable.');
+  t('Indicate an ethnicity focus in the target populations, if applicable.');
   t('Indicate whether the intervention is already in place at your institution (active), if implementation has yet to begin (planned), or if the intervention was in place but is no longer in place (discontinued).');
   t('Indicate which of the five Achieving the Dream outcome indicators the intervention addresses [ctrl+click to select multiple].');
   t('Intervention Family');
