@@ -29,8 +29,11 @@ function intervention_clone_node_alter(&$node, $context) {
     $node->title = $orig->title;
 
     // increment the reporting year by one
-    $year = (int) substr($orig->field_reporting_year[LANGUAGE_NONE][0]['value'], 0, 4);
-    $node->field_reporting_year[LANGUAGE_NONE][0]['value'] = ++$year . '-01-01 00:00:00';
+    // $year = (int) substr($orig->field_reporting_year[LANGUAGE_NONE][0]['value'], 0, 4);
+    // $node->field_reporting_year[LANGUAGE_NONE][0]['value'] = ++$year . '-01-01 00:00:00';
+
+    // as of 4/4/14, the reporting year for cloned interventions should default to current
+    $node->field_reporting_year[LANGUAGE_NONE][0]['value'] = date('Y') . '-01-01 00:00:00';
 
     $node->log = "Cloned from {$orig->nid} (revision {$orig->vid}) by {$node->name}";
 
