@@ -222,9 +222,12 @@ function intervention_drush_update_core_team_leads() {
 
     if ($account === false) {
       watchdog('drush_interventions', 'user load by mail failed for %mail', array('%mail' => $mail));
+      $new_user = new StdClass();
       $new_user->mail = $mail;
       $new_user->name = $mail;
+      $new_user->is_new = true;
       $account = user_save($new_user);
+watchdog('drush_interventions', 'user_save new user result: %account', array('%account'=> var_export($account, true)));
     }
 
     $account->roles[$role_core_team_lead->rid] = $role_core_team_lead->name;
@@ -251,6 +254,7 @@ watchdog('drush interventions', 'account->uid: %uid', array('%uid' => $account->
       node_save($intervention);
     }
   }
+  watchdog('drush_intervention', 'core team lead update complete');
 }
 
 /***
