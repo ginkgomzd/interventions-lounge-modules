@@ -193,17 +193,18 @@ function drush_intervention_normalize_target_population() {
  ***/
 function intervention_drush_update_core_team_leads() {
   echo 'intervention-drush_update_core_team_leads';
+  watchdog('intervention_drush', 'running update_core_team_leads');
   $csv_file = drush_get_option('csv');
 
   if (!is_file($csv_file)) {
-    watchdog('intervention', "invalid csv file", null, WATCHDOG_ERROR);
+    watchdog('intervention_drush', "invalid csv file", null, WATCHDOG_ERROR);
   }
   $contacts = _intervention_parse_csv($csv_file);
-//  var_dump($contacts);
 
   #block users:
   intervention_block_core_team_leads();
 
+  watchdog('intervention_drush', 'loading role, "core team lead"');
   $role_core_team_lead = user_role_load_by_name('Core Team Lead');
 
   foreach ($contacts as $contact) {
@@ -217,8 +218,18 @@ function intervention_drush_update_core_team_leads() {
     if ($mail == '') continue;
 
     $account = user_load_by_mail($mail);
+//watchdog('drush_interventionsMZD', '%account', array('%account' => var_export($account, true))); continue;
+
+    if ($account === false) {
+      watchdog('drush_interventions', 'user load by mail failed for %mail', array('%mail' => $mail));
+      $new_user->mail = $mail;
+      $new_user->name = $mail;
+      $account = user_save($new_user);
+    }
+
     $account->roles[$role_core_team_lead->rid] = $role_core_team_lead->name;
     $account = user_save($account, array('name'=>$mail, 'mail'=>$mail));
+watchdog('drush interventions', 'account->uid: %uid', array('%uid' => $account->uid));
     user_user_operations_unblock(array($account->uid));
 
     $interventions = _intervention_get_interventions($unitid);
@@ -233,7 +244,7 @@ function intervention_drush_update_core_team_leads() {
     foreach ($interventions as $intervention) {
       if ($field_contact_nid != $intervention->field_contact[LANGUAGE_NONE][0]['nid']) {
         $field_contact_nid = $intervention->field_contact[LANGUAGE_NONE][0]['nid'];
-        _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$mail, 'phone'=>$phone));
+        _intervention_update_intervention_contact($field_contact_nid, array('name'=>$name, 'title'=>$title, 'email'=>$mail, 'phone'=>$phone, 'uid'=>$account->uid));
       }
       //ensure intervention uid
       $intervention->uid = $account->uid;
@@ -253,6 +264,7 @@ function _intervention_update_intervention_contact($field_contact_nid, $data = a
   $contact->field_email[LANGUAGE_NONE][0]['email'] = $data['email'];
   $contact->field_job_title[LANGUAGE_NONE][0]['value'] = $data['title'];
   $contact->field_contact_phone[LANGUAGE_NONE][0]['value'] = $data['phone'];
+  $contact->uid = $data['uid'];
 
   return node_save($contact);
 }
@@ -264,18 +276,16 @@ function _intervention_update_intervention_contact($field_contact_nid, $data = a
 function _intervention_parse_csv($filepath, $DELIM = '|', $QUAL = '"' ) {
     $fd = fopen($filepath, "r");
 
+    $file_arr = array();
+    $line = fgets($fd);
+    $keys_arr = str_getcsv($line, $DELIM, $QUAL);
     while (!feof($fd)) {
         $line = fgets($fd);
 
-        if (!isset($file_arr)) {
-            $keys_arr = str_getcsv($line, $DELIM, $QUAL);
-            $file_arr = array();
-        } else {
-            if ( count($keys_arr)!= count(str_getcsv($line, $DELIM, $QUAL)) ) {
-                continue;
-            }
-            $file_arr[] = array_combine($keys_arr, str_getcsv($line, $DELIM, $QUAL));
-        }
+         if ( count($keys_arr)!= count(str_getcsv($line, $DELIM, $QUAL)) ) {
+              continue;
+          }
+          $file_arr[] = array_combine($keys_arr, str_getcsv($line, $DELIM, $QUAL));
     }
     fclose($fd);
 
@@ -295,8 +305,8 @@ function _intervention_get_interventions($UNITID) {
     ->fieldCondition('field_ipeds_unitid', 'value', $UNITID, '=')
     ->execute();
 
-  if (empty($college['node'])) { watchdog('drush_interventions', 'warning, get_interventions failed to load college_profile for %unitid', array('%unitid'=>$UNITID)); return null; }
-  if (count($college) > 1) watchdog('drush_interventions', 'warning, get_interventions found multiple colleges for ipeds_unitid, %unitid', array('%unitid'=>$UNITID), WATHDOG_WARNING);
+  if (empty($result['node'])) { watchdog('drush_interventions', 'warning, get_interventions failed to load college_profile for %unitid', array('%unitid'=>$UNITID)); return null; }
+  if (count($result) > 1) watchdog('drush_interventions', 'warning, get_interventions found multiple colleges for ipeds_unitid, %unitid', array('%unitid'=>$UNITID), WATHDOG_WARNING);
 
   $query = new EntityFieldQuery();
   $college = array_keys($result['node']);
