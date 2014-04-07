@@ -50,7 +50,7 @@ function drush_ipeds_import_update_ipeds() {
         //var_dump($sf_id . "||" . array_key_exists($sf_id, $sf_ipeds_id_map));
         if (!isset($sf_id)) continue;
         //truncate ID to match bad id's in map
-        $sf_id = substr($sf_id, 0, 15);
+        //$sf_id = substr($sf_id, 0, 15); We now have full SF-ID's in the mapping.
         if (array_key_exists($sf_id, $sf_ipeds_id_map)) {
             var_dump($sf_id);
             $ipeds_data = _ipeds_import_get_ipeds_row($ipeds, $sf_ipeds_id_map[$sf_id]);
