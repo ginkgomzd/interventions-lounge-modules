@@ -131,7 +131,7 @@ function _ipeds_import_generate_derrived_fields(array $rows) {
     $pell = $row[$pell_row_key];
 
     if (isset($hispanic)) {
-      $row ['hisp_grouped'] = _ipeds_import_get_tiers($hispanic,
+      $row ['hispanic_grouped'] = _ipeds_import_get_tiers($hispanic,
               array('12.5' => 0, '25.0' => 1, '100' => 2)
       );
     }
