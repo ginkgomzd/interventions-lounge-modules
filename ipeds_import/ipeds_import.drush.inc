@@ -120,12 +120,12 @@ function _ipeds_import_parse_csv($filepath) {
     2|More than 30% Pell Recipients
  ***/
 function _ipeds_import_generate_derrived_fields(array $rows) {
-
+  $field_map = array_flip(_ipeds_import_field_map()_);
+  $hisp_row_key = $field_map['field_ipeds_pct_latino_dec'];
+  $black_row_key = $field_map['field_ipeds_pct_black_dec'];
+  $pell_row_key = $field_map['field_ipeds_pell_recipients_pct'];
+    
   foreach ($rows as &$row) {
-
-    $hisp_row_key = 'DRVEF2011.Percent of total enrollment that are Hispanic/Latino';
-    $black_row_key = 'DRVEF2011.Percent of total enrollment that are Black or African American';
-    $pell_row_key = 'SFA1011_RV.Percent of undergraduate students receiving Pell grants';
     $hispanic = $row[$hisp_row_key];
     $black = $row[$black_row_key];
     $pell = $row[$pell_row_key];
@@ -198,7 +198,7 @@ function _ipeds_import_field_map() {
 	"C2012_B.White total" => 'field_ipeds_num_white',
 	"C2012_B.Two or more races total" => 'field_ipeds_num_2more',
 	"C2012_B.Race/ethnicity unknown total" => 'field_ipeds_num_unknown',
-
+// calculated grouping fields (not in csv), but should be present in this mapping:
 	"hispanic_grouped" => 'field_field_atd_grouping_hispani',
 	"black_grouped" => 'field_field_atd_grouping_black',
 	"pell_grouped" => 'field_field_atd_grouping_pell',
