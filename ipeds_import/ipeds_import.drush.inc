@@ -120,7 +120,7 @@ function _ipeds_import_parse_csv($filepath) {
     2|More than 30% Pell Recipients
  ***/
 function _ipeds_import_generate_derrived_fields(array $rows) {
-  $field_map = array_flip(_ipeds_import_field_map()_);
+  $field_map = array_flip(_ipeds_import_field_map());
   $hisp_row_key = $field_map['field_ipeds_pct_latino_dec'];
   $black_row_key = $field_map['field_ipeds_pct_black_dec'];
   $pell_row_key = $field_map['field_ipeds_pell_recipients_pct'];
