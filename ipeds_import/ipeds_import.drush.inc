@@ -166,8 +166,8 @@ function _ipeds_import_field_map() {
         "HD2012.Institution size category" => "field_ipeds_inst_size_category",
         "HD2012.State abbreviation" => null,
         "HD2012.Geographic region" => 'field_ipeds_geo_region',
-        "HD2012.Historically Black College or University" => 'field_ipeds_hbcu',
-        "HD2012.Tribal college" => 'field_ipeds_tribal',
+        "HD2012.Historically Black College or University" => 'field_ipeds_hbcu_text',
+        "HD2012.Tribal college" => 'field_ipeds_tribal_text',
         "HD2012.Degree of urbanization (Urban-centric locale)" => 'field_ipeds_degree_of_urb',
         "HD2012.Carnegie Classification 2010: Basic" => 'field_ipeds_carnegie_2010',
 
@@ -274,14 +274,8 @@ function _ipeds_import_update_fields(array $fields, stdClass $entity) {
 
     $lang = (property_exists($entity, 'language') ? $entity->language : LANGUAGE_NONE);
     foreach ($fields as $fieldname => $data) {
-        //$fieldname = 'field_' . $fieldname;
 
-        /*if ($fieldname == 'field_ipeds_hbcu'
-            || $fieldname == 'field_ipeds_tribal'
-            )
-            continue;
-        */
-        if (!array_key_exists('format', $data)) {
+       if (!array_key_exists('format', $data)) {
             $data['format'] = NULL;
         }
         
