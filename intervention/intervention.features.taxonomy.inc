@@ -13,10 +13,9 @@ function intervention_taxonomy_default_vocabularies() {
       'name' => 'Interventions',
       'machine_name' => 'interventions',
       'description' => 'This taxonomy should not be updated manually. It is maintained via an integration with the Rules module.',
-      'hierarchy' => '0',
+      'hierarchy' => 0,
       'module' => 'taxonomy',
-      'weight' => '0',
-      'metatags' => array(),
+      'weight' => 0,
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
